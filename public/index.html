@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free LLMs.txt Generator</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #4ADE80;
+      --primary-dark: #22C55E;
+      --background: #0F172A;
+      --card-bg: #1E293B;
+      --text: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --border: #334155;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: radial-gradient(ellipse at top, #1E293B, #0F172A), 
+                  radial-gradient(ellipse at bottom, #0F172A, #1E293B);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      position: relative;
+    }
+    
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: var(--card-bg);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 6px;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #f5f5f5, var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .card p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    
+    input[type="email"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    
+    input[type="email"]:focus,
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.25);
+    }
+    
+    .toggle-container {
+      display: flex;
+      background: rgba(15, 23, 42, 0.4);
+      border-radius: 12px;
+      padding: 0.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .toggle-option {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-radius: 10px;
+      font-weight: 500;
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s ease;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      height: calc(100% - 0.5rem);
+      top: 0.25rem;
+      width: calc(50% - 0.25rem);
+      background: linear-gradient(145deg, var(--primary-dark), var(--primary));
+      border-radius: 8px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+    
+    input[name="inputType"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    #sitemapUrlOption:checked ~ .toggle-slider {
+      transform: translateX(0);
+    }
+    
+    #manualContentOption:checked ~ .toggle-slider {
+      transform: translateX(calc(100% + 0.25rem));
+    }
+    
+    .toggle-option.active {
+      color: #000;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 0.875rem 1rem;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1rem;
+      resize: vertical;
+      font-family: inherit;
+    }
+    
+    .input-section {
+      display: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .input-section.active {
+      display: block;
+    }
+    
+    .btn {
+      background: linear-gradient(145deg, var(--primary), var(--primary-dark));
+      color: #0F172A;
+      border: none;
+      padding: 0.875rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.25);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .btn:hover {
+      background: linear-gradient(145deg, var(--primary), var(--primary));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(34, 197, 94, 0.35);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .loading {
+      display: none;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    
+    .spinner {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+    
+    .spinner div {
+      position: absolute;
+      top: 33px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    }
+    
+    .spinner div:nth-child(1) {
+      left: 8px;
+      animation: spinner1 0.6s infinite;
+    }
+    
+    .spinner div:nth-child(2) {
+      left: 8px;
+      animation: spinner2 0.6s infinite;
+    }
+    
+    .spinner div:nth-child(3) {
+      left: 32px;
+      animation: spinner2 0.6s infinite;
+    }
+    
+    .spinner div:nth-child(4) {
+      left: 56px;
+      animation: spinner3 0.6s infinite;
+    }
+    
+    @keyframes spinner1 {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes spinner2 {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(24px, 0); }
+    }
+    
+    @keyframes spinner3 {
+      0% { transform: scale(1); }
+      100% { transform: scale(0); }
+    }
+    
+    #result {
+      margin-top: 2rem;
+      display: none;
+    }
+    
+    .result-card {
+      background: linear-gradient(145deg, rgba(74, 222, 128, 0.1), rgba(34, 197, 94, 0.08));
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    
+    .result-card h2 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+    
+    .result-card p {
+      margin-bottom: 1rem;
+    }
+    
+    #llmContent {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow: auto;
+      max-height: 300px;
+      font-family: monospace;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+      color: var(--text-secondary);
+    }
+    
+    a#downloadLink {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+    }
+    
+    a#downloadLink:hover {
+      text-decoration: underline;
+    }
+    
+    .download-icon {
+      margin-right: 0.5rem;
+      height: 18px;
+      width: 18px;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    .gradient-blur {
+      position: absolute;
+      width: 35%;
+      height: 50%;
+      background: radial-gradient(circle, rgba(74, 222, 128, 0.15), transparent 70%);
+      top: -15%;
+      right: -10%;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: -1;
+    }
+    
+    .gradient-blur-2 {
+      position: absolute;
+      width: 40%;
+      height: 40%;
+      background: radial-gradient(circle, rgba(15, 23, 42, 0.2), transparent 70%);
+      bottom: -20%;
+      left: -15%;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+    }
+    
+    @media (max-width: 640px) {
+      .card {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gradient-blur"></div>
+  <div class="gradient-blur-2"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon"></div>
+      <h1>Free LLMs.txt Generator</h1>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+    <div class="card">
+      <p>
+        Generate an LLMs.txt file for your website by providing your sitemap URL or pasting your documentation content manually.
+      </p>
+      
+      <!-- FORM -->
+      <form id="llmForm">
+        <div class="form-group">
+          <label for="email">Enter your email:</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com" />
+        </div>
+        
+        <!-- TOGGLE BUTTONS -->
+        <label>Choose Input Type:</label>
+        <div class="toggle-container">
+          <input type="radio" name="inputType" id="sitemapUrlOption" value="sitemapUrl" checked />
+          <input type="radio" name="inputType" id="manualContentOption" value="manualContent" />
+          <label for="sitemapUrlOption" class="toggle-option active">Sitemap URL</label>
+          <label for="manualContentOption" class="toggle-option">Manual Content</label>
+          <div class="toggle-slider"></div>
+        </div>
+        
+        <div id="sitemapUrlSection" class="input-section active">
+          <label for="sitemapUrl">Sitemap URL:</label>
+          <input type="text" id="sitemapUrl" name="sitemapUrl" placeholder="https://example.com/sitemap.xml" />
+        </div>
+        
+        <div id="manualContentSection" class="input-section">
+          <label for="manualContent">Paste your content:</label>
+          <textarea id="manualContent" name="manualContent" placeholder="Paste your site content or documentation here..."></textarea>
+        </div>
+        
+        <button type="submit" class="btn" id="generateBtn">
+          Generate my LLM.txt
+        </button>
+      </form>
+      
+      <!-- LOADING ANIMATION -->
+      <div class="loading" id="loadingIndicator">
+        <div class="spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      
+      <!-- RESULT SECTION -->
+      <div id="result">
+        <div class="result-card">
+          <h2>✓ Your LLM.txt file is ready!</h2>
+          <p>Your file has been generated and sent to your email.</p>
+          <p>
+            <a id="downloadLink" href="#">
+              <svg class="download-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download LLM.txt
+            </a>
+          </p>
+          <div id="llmContent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Created by Garvit Malhan • © 2025</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Toggle input sections based on user selection
+    const sitemapUrlOption = document.getElementById('sitemapUrlOption');
+    const manualContentOption = document.getElementById('manualContentOption');
+    const sitemapUrlSection = document.getElementById('sitemapUrlSection');
+    const manualContentSection = document.getElementById('manualContentSection');
+    const toggleOptions = document.querySelectorAll('.toggle-option');
+    
+    sitemapUrlOption.addEventListener('change', function() {
+      if (this.checked) {
+        sitemapUrlSection.classList.add('active');
+        manualContentSection.classList.remove('active');
+        toggleOptions[0].classList.add('active');
+        toggleOptions[1].classList.remove('active');
+      }
+    });
+    
+    manualContentOption.addEventListener('change', function() {
+      if (this.checked) {
+        sitemapUrlSection.classList.remove('active');
+        manualContentSection.classList.add('active');
+        toggleOptions[0].classList.remove('active');
+        toggleOptions[1].classList.add('active');
+      }
+    });
+    
+    // Handle form submission with loading animation
+    const llmForm = document.getElementById('llmForm');
+    const generateBtn = document.getElementById('generateBtn');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    const resultSection = document.getElementById('result');
+    
+    llmForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Show loading animation
+      generateBtn.style.display = 'none';
+      loadingIndicator.style.display = 'flex';
+      
+      const email = document.getElementById('email').value;
+      const inputType = sitemapUrlOption.checked ? 'sitemapUrl' : 'manualContent';
+      const sitemapUrl = document.getElementById('sitemapUrl').value;
+      const manualContent = document.getElementById('manualContent').value;
+      
+      // Simulate API request with timeout
+      setTimeout(() => {
+        // In production, replace with actual fetch call:
+        /*
+        fetch('/api/sendEmail', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, inputType, sitemapUrl, manualContent })
+        })
+        .then(response => response.json())
+        .then(data => {
+          handleResponse(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred.');
+          resetForm();
+        });
+        */
+        
+        // For demo, simulate successful response
+        const mockResponse = {
+          content: `# LLMs.txt\nUser-agent: Claude\nAllow: /public/*\nDisallow: /private/*\n\nUser-agent: GPT\nAllow: /api/docs/*\nDisallow: /internal/*`
+        };
+        handleResponse(mockResponse);
+      }, 2000);
+    });
+    
+    function handleResponse(data) {
+      if (data.error) {
+        alert('Error: ' + data.error);
+        resetForm();
+        return;
+      }
+      
+      // Hide loading, show result
+      loadingIndicator.style.display = 'none';
+      resultSection.style.display = 'block';
+      
+      // Display the generated content
+      document.getElementById('llmContent').textContent = data.content;
+      
+      // Create a download link for the file
+      const blob = new Blob([data.content], { type: 'text/plain' });
+      const downloadLink = document.getElementById('downloadLink');
+      downloadLink.href = URL.createObjectURL(blob);
+      downloadLink.download = 'llms.txt';
+    }
+    
+    function resetForm() {
+      loadingIndicator.style.display = 'none';
+      generateBtn.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
