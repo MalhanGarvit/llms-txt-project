@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 // Initialize OpenAI with API key from environment variables
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || 'sk-dummy-key-replace-with-actual-key'
+  apiKey: process.env.OPENAI_API_KEY || 'ssk-proj-zuxfvxfw82hKzK2yvkLfdl-sKmlmkhLUtIj4YayKJ4qQOBQof6pz_FTidnIbUBVhezj-vvZKUaT3BlbkFJ0zuumTvtPTotoLQw8AxB15Vp15hx3UmDgmjHHIASxm15AXUwCFbbdHEpQ7MjUZ-OcR4iZszOMA'
 });
 
 // Middleware to parse incoming data
@@ -82,97 +82,90 @@ async function getSitemapUrl(domain) {
   return null;
 }
 
-// Function to parse sitemap and extract URLs
-async function parseSitemap(sitemapUrl) {
+/**
+ * Function to extract URLs from sitemap XML and format them into a simple numbered list
+ * @param {string} sitemapXml - The raw XML content of the sitemap
+ * @param {string} domain - The domain name for context
+ * @returns {string} A formatted, numbered list of URLs
+ */
+async function extractAndFormatUrls(sitemapXml, domain) {
   try {
-    const response = await axios.get(sitemapUrl, { timeout: 10000 });
-    const xmlData = response.data;
-    
-    // Check if it's a sitemap or sitemap index
-    if (xmlData.includes('<sitemapindex')) {
-      // Handle sitemap index
-      const result = await parseStringPromise(xmlData);
+    // Check if it's a sitemap index
+    if (sitemapXml.includes('<sitemapindex')) {
+      const result = await parseStringPromise(sitemapXml);
       if (result.sitemapindex && result.sitemapindex.sitemap) {
-        const sitemaps = result.sitemapindex.sitemap.map(sitemap => sitemap.loc[0]);
-        
         // Get the first sitemap in the index
-        if (sitemaps.length > 0) {
-          return parseSitemap(sitemaps[0]);
-        }
-      }
-      return [];
-    } else {
-      // Regular sitemap
-      const result = await parseStringPromise(xmlData);
-      
-      // Check if urlset and url properties exist
-      if (result.urlset && result.urlset.url) {
-        // Extract URLs from the sitemap
-        const urls = result.urlset.url.map(url => ({
-          loc: url.loc[0],
-          lastmod: url.lastmod ? url.lastmod[0] : null,
-          priority: url.priority ? url.priority[0] : null
-        }));
+        const firstSitemapUrl = result.sitemapindex.sitemap[0].loc[0];
+        console.log(`Found sitemap index, fetching first sitemap: ${firstSitemapUrl}`);
         
-        return urls.slice(0, 30); // Limit to 30 URLs to avoid overwhelming the API
+        // Fetch the first sitemap
+        const response = await axios.get(firstSitemapUrl, { timeout: 10000 });
+        sitemapXml = response.data;
       }
-      return [];
     }
+    
+    // Parse the sitemap XML
+    const result = await parseStringPromise(sitemapXml);
+    
+    let formattedUrls = `Simple URL list from ${domain} sitemap:\n\n`;
+    
+    // Check if it's a valid sitemap with urlset and url properties
+    if (result.urlset && result.urlset.url) {
+      // Extract URLs
+      const urls = result.urlset.url.map(url => url.loc[0].trim());
+      
+      // Create the numbered list
+      urls.forEach((url, index) => {
+        formattedUrls += `${index + 1}. ${url}\n`;
+      });
+      
+      // Limit to 50 URLs to avoid overwhelming the API
+      if (urls.length > 50) {
+        const truncatedUrls = formattedUrls.split('\n').slice(0, 52).join('\n');
+        return truncatedUrls + '\n\n[List truncated to 50 URLs]';
+      }
+    } else {
+      formattedUrls += "No valid URLs found in the sitemap.";
+    }
+    
+    return formattedUrls;
   } catch (error) {
-    console.error('Error parsing sitemap:', error.message);
-    return [];
+    console.error('Error extracting URLs from sitemap:', error.message);
+    return `Error parsing sitemap for ${domain}: ${error.message}`;
   }
 }
 
-// Function to generate LLMs.txt content using OpenAI
-async function generateLLMsTxtWithOpenAI(domain, sitemapData) {
+/**
+ * Function to generate LLMs.txt content using OpenAI with simplified URL list
+ * @param {string} domain - The domain name
+ * @param {string} sitemapXml - The raw sitemap XML content
+ * @returns {Promise<string>} The generated LLMs.txt content
+ */
+async function generateLLMsTxtWithOpenAI(domain, sitemapXml) {
   try {
-    // Create a structured summary of the sitemap data
-    let sitemapSummary = `Domain: ${domain}\n\nTop URLs:\n`;
+    // Convert the sitemap to a simple URL list format
+    const formattedUrls = await extractAndFormatUrls(sitemapXml, domain);
+    console.log('Formatted URLs to send to OpenAI:');
+    console.log(formattedUrls);
     
-    if (sitemapData && sitemapData.length > 0) {
-      sitemapData.forEach((item, index) => {
-        if (index < 15) { // Only include top 15 URLs to avoid token limits
-          sitemapSummary += `${index + 1}. ${item.loc}\n`;
-        }
-      });
-    } else {
-      sitemapSummary += "No sitemap data available.";
-    }
-    
-    // Prompt for OpenAI
-    const prompt = `
-    You are an expert in creating LLMs.txt files for websites. An LLMs.txt file provides instructions to AI assistants about how to interact with content from a website.
-    
-    Based on the following website information, create a comprehensive LLMs.txt file:
-    
-    ${sitemapSummary}
-    
-    The LLMs.txt file should include:
-    1. Clear permissions for AI crawling and indexing
-    2. Usage guidelines for the website's content
-    3. Areas of the site that should be emphasized or de-emphasized
-    4. Any copyright or attribution requirements
-    5. Appropriate tone and context for referencing the website's content
-    
-    Format the response in proper markdown with clear sections.
-    `;
-    
-    // Call OpenAI API
+    // Call OpenAI API with the formatted URL list
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content: "You are an AI assistant that creates LLMs.txt files for websites based on their sitemap data."
+          content: "You are an AI assistant that generates a structured `llms.txt` file in Markdown format from a given list of URLs. The goal is to create a well-organized, useful file for LLMs to understand the website content effectively.  \n\nInstructions:  \n1. Understand & Validate Data:\n  - understand the URL list and extract unique, human-readable pages\n  - Avoid non-content pages like `/login`, `/cart`, `/checkout`, `/admin`, `/wp-json`, or any API endpoints.  \n  - If the URL list is invalid or inaccessible, return an appropriate error message instead of generating fake data.  \n\n2. Generate Structured Output: \n  - The file must begin with an H1 (`#`) containing the website name (either from metadata or inferred from the domain).  \n  - Follow with a blockquote (`>`) summarizing the site based on the extracted content.  \n  - Organize URLs into **meaningful sections** using H2 (`##`) headers (e.g., `## Blog`, `## Products`, `## Docs`).  \n  - Each URL should be formatted as `- [Page Title](URL): Optional description`.  \n  - If page titles are missing, generate concise, relevant ones based on the URL structure.  \n\n3. Edge Cases & Enhancements: \n   - If the site has **no descriptive metadata**, generate a neutral summary instead of guessing.  \n  - If the list contains external links, place them under an `## External Resources` section.  \n  - Include an `## Optional` section for less essential pages that can be skipped if needed.  \n\nOnly generate output when valid data is available. If issues arise, clearly state them in the response."
         },
         {
           role: "user",
-          content: prompt
+          content: formattedUrls
         }
       ],
-      temperature: 0.7,
-      max_tokens: 1200
+      temperature: 1,
+      max_tokens: 4000,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0
     });
     
     // Return the AI-generated content
@@ -220,12 +213,12 @@ app.post('/api/generate', async (req, res) => {
     let llmsContent = '';
     
     if (sitemapUrl) {
-      // Step 2: Parse the sitemap to get URLs
-      const sitemapData = await parseSitemap(sitemapUrl);
-      console.log(`Parsed ${sitemapData.length} URLs from sitemap`);
+      // Step 2: Get the raw sitemap XML content
+      const response = await axios.get(sitemapUrl, { timeout: 10000 });
+      const sitemapXml = response.data;
       
-      // Step 3: Generate LLMs.txt content using OpenAI
-      llmsContent = await generateLLMsTxtWithOpenAI(domain, sitemapData);
+      // Step 3: Generate LLMs.txt content using OpenAI with simplified URL format
+      llmsContent = await generateLLMsTxtWithOpenAI(domain, sitemapXml);
     } else {
       console.log('No sitemap found, using fallback content');
       // Fallback if no sitemap found
