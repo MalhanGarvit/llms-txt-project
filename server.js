@@ -11,7 +11,9 @@ const PORT = process.env.PORT || 3000;
 
 // Initialize OpenAI with API key from environment variables
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || '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'
+  apiKey: "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",
+  organization: "org-A7Xqn8C2bR5xnZI0ppQnjSH5",
+  project: "proj_9smNtah46MSLI759icM94grV"
 });
 
 // Middleware to parse incoming data
