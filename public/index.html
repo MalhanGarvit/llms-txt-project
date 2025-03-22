@@ -2320,7 +2320,14 @@
       },
       body: JSON.stringify({ email: email, domain: domain }),
     })
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        return response.json().then(err => {
+          throw new Error(err.details || 'Error generating LLMs.txt file');
+        });
+      }
+      return response.json();
+    })
     .then(data => {
       // Hide loading, show result
       loadingIndicator.style.display = 'none';
@@ -2331,7 +2338,17 @@
       // Hide loading, show form in case of error
       loadingIndicator.style.display = 'none';
       llmForm.style.display = 'block';
-      alert('There was an error generating your LLMs.txt file. Please try again.');
+      
+      // Show more specific error message
+      let errorMessage = 'There was an error generating your LLMs.txt file.';
+      
+      if (error.message.includes('socket close')) {
+        errorMessage = 'The connection timed out while generating your file. This might happen with larger websites. Please try again or try with a smaller/simpler domain.';
+      } else if (error.message) {
+        errorMessage = `Error: ${error.message}. Please try again.`;
+      }
+      
+      alert(errorMessage);
     });
   });
   

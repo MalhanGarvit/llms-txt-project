@@ -151,7 +151,13 @@ async function generateLLMsTxtWithGemini(domain, sitemapXml) {
     // Call Gemini API with the formatted URL list
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
     
-    const result = await model.generateContent({
+    // Set a longer timeout promise
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Gemini API request timed out after 60 seconds')), 60000);
+    });
+    
+    // Make the API call with a timeout
+    const apiCallPromise = model.generateContent({
       contents: [
         {
           parts: [
@@ -169,6 +175,9 @@ async function generateLLMsTxtWithGemini(domain, sitemapXml) {
       }
     });
     
+    // Race the API call against the timeout
+    const result = await Promise.race([apiCallPromise, timeoutPromise]);
+    
     // Get the response text (markdown content)
     const markdownContent = result.response.text();
     
@@ -181,6 +190,10 @@ async function generateLLMsTxtWithGemini(domain, sitemapXml) {
     return markdownContent;
   } catch (error) {
     console.error('Error generating content with Gemini:', error);
+    
+    if (error.message.includes('timed out') || error.message.includes('socket close')) {
+      console.log('Handling timeout or socket close error with fallback content');
+    }
     
     // Fallback content if Gemini fails
     return `# LLMs.txt for ${domain}
@@ -213,21 +226,27 @@ app.post('/api/generate', async (req, res) => {
       return res.status(400).json({ error: 'Email and domain are required' });
     }
     
-    // Step 1: Get the sitemap URL
-    const sitemapUrl = await getSitemapUrl(domain);
+    // Set a timeout for the entire request
+    const requestTimeout = setTimeout(() => {
+      throw new Error('Request timed out after 120 seconds');
+    }, 120000); // 2 minutes timeout
     
-    let markdownContent = '';
-    
-    if (sitemapUrl) {
-      // Step 2: Get the raw sitemap XML content
-      const response = await axios.get(sitemapUrl, { timeout: 10000 });
-      const sitemapXml = response.data;
+    try {
+      // Step 1: Get the sitemap URL
+      const sitemapUrl = await getSitemapUrl(domain);
       
-      // Step 3: Generate LLMs.txt content using Gemini with simplified URL format
-      markdownContent = await generateLLMsTxtWithGemini(domain, sitemapXml);
-    } else {
-      // Fallback if no sitemap found
-      markdownContent = `# LLMs.txt for ${domain}
+      let markdownContent = '';
+      
+      if (sitemapUrl) {
+        // Step 2: Get the raw sitemap XML content
+        const response = await axios.get(sitemapUrl, { timeout: 15000 });
+        const sitemapXml = response.data;
+        
+        // Step 3: Generate LLMs.txt content using Gemini with simplified URL format
+        markdownContent = await generateLLMsTxtWithGemini(domain, sitemapXml);
+      } else {
+        // Fallback if no sitemap found
+        markdownContent = `# LLMs.txt for ${domain}
 
 ## Permissions
 - AI assistants may access and index content from this website for informational purposes.
@@ -245,18 +264,18 @@ app.post('/api/generate', async (req, res) => {
 - Do not use content from this website to train AI models without explicit permission.
 - Do not present the website's content as your own original analysis.
 `;
-    }
-    
-    // Step 4: Create a file with the markdown content
-    // We're not writing to the filesystem, but creating a Buffer to attach to the email
-    const fileBuffer = Buffer.from(markdownContent, 'utf-8');
-    
-    // Step 5: Send email with the generated content as a file attachment
-    const mailOptions = {
-      from: process.env.SENDER_EMAIL || "llmstxt@gmail.com",
-      to: email,
-      subject: `Your LLMs.txt file for ${domain}`,
-      text: `Hello,
+      }
+      
+      // Step 4: Create a file with the markdown content
+      // We're not writing to the filesystem, but creating a Buffer to attach to the email
+      const fileBuffer = Buffer.from(markdownContent, 'utf-8');
+      
+      // Step 5: Send email with the generated content as a file attachment
+      const mailOptions = {
+        from: process.env.SENDER_EMAIL || "llmstxt@gmail.com",
+        to: email,
+        subject: `Your LLMs.txt file for ${domain}`,
+        text: `Hello,
 
 We've generated an LLMs.txt file for your website ${domain}. You can find it attached to this email.
 
@@ -264,22 +283,41 @@ To use this file, simply place it in the root directory of your website.
 
 Best regards,
 Garvit`,
-      attachments: [
-        {
-          filename: 'llms.txt',
-          content: fileBuffer
-        }
-      ]
-    };
-    
-    // Send the email
-    await transporter.sendMail(mailOptions);
-    
-    // Step 6: Return success response
-    return res.status(200).json({ success: true, message: 'LLMs.txt generated and sent successfully' });
+        attachments: [
+          {
+            filename: 'llms.txt',
+            content: fileBuffer
+          }
+        ]
+      };
+      
+      // Send the email
+      await transporter.sendMail(mailOptions);
+      
+      // Clear the timeout as we've completed successfully
+      clearTimeout(requestTimeout);
+      
+      // Step 6: Return success response
+      return res.status(200).json({ success: true, message: 'LLMs.txt generated and sent successfully' });
+    } catch (innerError) {
+      // Clear the timeout if we hit an error
+      clearTimeout(requestTimeout);
+      throw innerError;
+    }
   } catch (error) {
     console.error('Error generating LLMs.txt:', error);
-    return res.status(500).json({ error: 'Failed to generate LLMs.txt file', details: error.message });
+    
+    // Provide a more specific error message based on the error type
+    let errorMessage = error.message || 'Unknown error';
+    let errorDetails = 'Failed to generate LLMs.txt file';
+    
+    if (errorMessage.includes('timeout') || errorMessage.includes('socket')) {
+      errorDetails = 'The request timed out. This might happen with larger websites. Please try again or try with a smaller domain.';
+    } else if (errorMessage.includes('ENOTFOUND') || errorMessage.includes('ETIMEDOUT')) {
+      errorDetails = `Could not connect to the domain ${req.body?.domain || 'provided'}. Please check that the domain is correct and accessible.`;
+    }
+    
+    return res.status(500).json({ error: errorDetails, details: errorMessage });
   }
 });
 
