@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <!-- Document icon -->
+  <g transform="translate(0, 5)">
+    <rect x="5" y="5" width="40" height="50" rx="4" ry="4" fill="#6C63FF" />
+    <path d="M30 5 L45 20 L30 20 Z" fill="#5A52E0" />
+  </g>
+  
+  <!-- LLMs.txt Text -->
+  <g transform="translate(55, 0)">
+    <text x="0" y="38" fill="#F5F7FF" font-family="Space Grotesk, Arial, sans-serif" font-weight="700" font-size="28">LLMs.txt</text>
+    <text x="0" y="55" fill="#B4B7C5" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="14">Generator</text>
+  </g>
+</svg> 
