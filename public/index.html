@@ -2312,6 +2312,10 @@
     llmForm.style.display = 'none';
     loadingIndicator.style.display = 'flex';
     
+    // Add a client-side timeout to abort the fetch after 3 minutes (180s)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 180000);
+    
     // Make actual API call
     fetch('/api/generate', {
       method: 'POST',
@@ -2319,8 +2323,11 @@
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email: email, domain: domain }),
+      signal: controller.signal
     })
     .then(response => {
+      clearTimeout(timeoutId); // Clear the abort timeout
+      
       if (!response.ok) {
         return response.json().then(err => {
           throw new Error(err.details || 'Error generating LLMs.txt file');
@@ -2334,6 +2341,7 @@
       resultSection.style.display = 'block';
     })
     .catch(error => {
+      clearTimeout(timeoutId); // Ensure the timeout is cleared
       console.error('Error:', error);
       // Hide loading, show form in case of error
       loadingIndicator.style.display = 'none';
@@ -2342,8 +2350,10 @@
       // Show more specific error message
       let errorMessage = 'There was an error generating your LLMs.txt file.';
       
-      if (error.message.includes('socket close')) {
-        errorMessage = 'The connection timed out while generating your file. This might happen with larger websites. Please try again or try with a smaller/simpler domain.';
+      if (error.name === 'AbortError') {
+        errorMessage = 'The request took too long and was aborted. This might happen with larger websites. Please try again with a smaller domain.';
+      } else if (error.message.includes('socket close') || error.message.includes('timeout')) {
+        errorMessage = 'The connection timed out while generating your file. This can happen in production environments with larger websites. Please try again with a smaller domain.';
       } else if (error.message) {
         errorMessage = `Error: ${error.message}. Please try again.`;
       }

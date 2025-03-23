@@ -151,9 +151,9 @@ async function generateLLMsTxtWithGemini(domain, sitemapXml) {
     // Call Gemini API with the formatted URL list
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
     
-    // Set a longer timeout promise
+    // Set a longer timeout promise - increase to 120 seconds for production
     const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(new Error('Gemini API request timed out after 60 seconds')), 60000);
+      setTimeout(() => reject(new Error('Gemini API request timed out after 120 seconds')), 120000);
     });
     
     // Make the API call with a timeout
@@ -173,6 +173,10 @@ async function generateLLMsTxtWithGemini(domain, sitemapXml) {
         topP: 1,
         topK: 1
       }
+    }).catch(err => {
+      console.error('Error in Gemini API call:', err.message);
+      // Rethrow with more specific message
+      throw new Error(`Gemini API error: ${err.message}`);
     });
     
     // Race the API call against the timeout
@@ -226,26 +230,38 @@ app.post('/api/generate', async (req, res) => {
       return res.status(400).json({ error: 'Email and domain are required' });
     }
     
-    // Set a timeout for the entire request
+    // Set a timeout for the entire request - increase to 180 seconds
     const requestTimeout = setTimeout(() => {
-      throw new Error('Request timed out after 120 seconds');
-    }, 120000); // 2 minutes timeout
+      throw new Error('Request timed out after 180 seconds');
+    }, 180000); // 3 minutes timeout for production
     
     try {
       // Step 1: Get the sitemap URL
+      console.log(`Getting sitemap for domain: ${domain}`);
       const sitemapUrl = await getSitemapUrl(domain);
+      console.log(`Sitemap URL: ${sitemapUrl || 'Not found'}`);
       
       let markdownContent = '';
       
       if (sitemapUrl) {
         // Step 2: Get the raw sitemap XML content
-        const response = await axios.get(sitemapUrl, { timeout: 15000 });
+        console.log(`Fetching sitemap content from: ${sitemapUrl}`);
+        const response = await axios.get(sitemapUrl, { 
+          timeout: 20000,  // Increase timeout to 20 seconds
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+          }
+        });
+        console.log(`Sitemap fetched, size: ${response.data.length} bytes`);
         const sitemapXml = response.data;
         
         // Step 3: Generate LLMs.txt content using Gemini with simplified URL format
+        console.log('Generating LLMs.txt content with Gemini...');
         markdownContent = await generateLLMsTxtWithGemini(domain, sitemapXml);
+        console.log(`Generated content length: ${markdownContent.length} characters`);
       } else {
         // Fallback if no sitemap found
+        console.log('No sitemap found, using fallback content');
         markdownContent = `# LLMs.txt for ${domain}
 
 ## Permissions
@@ -271,6 +287,7 @@ app.post('/api/generate', async (req, res) => {
       const fileBuffer = Buffer.from(markdownContent, 'utf-8');
       
       // Step 5: Send email with the generated content as a file attachment
+      console.log(`Sending email to: ${email}`);
       const mailOptions = {
         from: process.env.SENDER_EMAIL || "llmstxt@gmail.com",
         to: email,
@@ -291,8 +308,17 @@ Garvit`,
         ]
       };
       
-      // Send the email
-      await transporter.sendMail(mailOptions);
+      try {
+        // Send the email with additional timeout handling
+        await Promise.race([
+          transporter.sendMail(mailOptions),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Email sending timed out')), 30000))
+        ]);
+        console.log('Email sent successfully');
+      } catch (emailError) {
+        console.error('Error sending email:', emailError);
+        throw new Error(`Email sending failed: ${emailError.message}`);
+      }
       
       // Clear the timeout as we've completed successfully
       clearTimeout(requestTimeout);
@@ -315,6 +341,8 @@ Garvit`,
       errorDetails = 'The request timed out. This might happen with larger websites. Please try again or try with a smaller domain.';
     } else if (errorMessage.includes('ENOTFOUND') || errorMessage.includes('ETIMEDOUT')) {
       errorDetails = `Could not connect to the domain ${req.body?.domain || 'provided'}. Please check that the domain is correct and accessible.`;
+    } else if (errorMessage.includes('Email sending failed')) {
+      errorDetails = 'We generated your file but could not send the email. Please check your email address and try again.';
     }
     
     return res.status(500).json({ error: errorDetails, details: errorMessage });
