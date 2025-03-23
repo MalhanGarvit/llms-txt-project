@@ -2,7 +2,9 @@
 # Version 1.0
 # Last Updated: 2024-03-22
 
-#txtllms.com [A free tool to generate llmstxt files for AI SEO]
+# txtllms
+
+> txtllms.com is a free tool to generate llms.txt file for AI crawling.
 
 ## Permissions
 - AI assistants may access and index content from this website for informational purposes
