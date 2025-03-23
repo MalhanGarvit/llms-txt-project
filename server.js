@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const SibApiV3Sdk = require('@getbrevo/brevo');
+const nodemailer = require('nodemailer');
 const path = require('path');
 const axios = require('axios');
 const { parseStringPromise } = require('xml2js');
@@ -15,20 +15,23 @@ if (!process.env.GOOGLE_API_KEY) {
   console.error("ERROR: GOOGLE_API_KEY environment variable is not set. Please set it in your .env file.");
 }
 
-// Set up Brevo API
-let brevoClient = new SibApiV3Sdk.TransactionalEmailsApi();
-let apiKey = brevoClient.authentications['apiKey'];
-apiKey.apiKey = process.env.BREVO_API_KEY;
-if (!process.env.BREVO_API_KEY) {
-  console.error("ERROR: BREVO_API_KEY environment variable is not set. Please set it in your .env file.");
-}
-
 // Middleware to parse incoming data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the public directory
 app.use(express.static('public'));
+
+// Set up Nodemailer transporter using Gmail SMTP
+const transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST || 'smtp.gmail.com',
+  port: Number(process.env.EMAIL_PORT || 465),
+  secure: process.env.EMAIL_SECURE === 'true', // true for 465
+  auth: {
+    user: process.env.EMAIL_USER || "llmstxt@gmail.com",
+    pass: process.env.EMAIL_PASS || "eeng nhqv dyit ddhz"
+  }
+});
 
 // Function to get sitemap URL from domain
 async function getSitemapUrl(domain) {
@@ -249,29 +252,28 @@ app.post('/api/generate', async (req, res) => {
     const fileBuffer = Buffer.from(markdownContent, 'utf-8');
     
     // Step 5: Send email with the generated content as a file attachment
-    // Create a new SendSmtpEmail instance
-    let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+    const mailOptions = {
+      from: process.env.SENDER_EMAIL || "llmstxt@gmail.com",
+      to: email,
+      subject: `Your LLMs.txt file for ${domain}`,
+      text: `Hello,
+
+We've generated an LLMs.txt file for your website ${domain}. You can find it attached to this email.
+
+To use this file, simply place it in the root directory of your website.
+
+Best regards,
+Garvit`,
+      attachments: [
+        {
+          filename: 'llms.txt',
+          content: fileBuffer
+        }
+      ]
+    };
     
-    sendSmtpEmail.subject = `Your LLMs.txt file for ${domain}`;
-    sendSmtpEmail.htmlContent = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-      <p>Hello,</p>
-      
-      <p>We've generated an LLMs.txt file for your website ${domain}. You can find it attached to this email.</p>
-      
-      <p>To use this file, simply place it in the root directory of your website.</p>
-      
-      <p>Best regards,<br>Garvit</p>
-    </div>`;
-    sendSmtpEmail.sender = { "name": "LLMs.txt Generator", "email": process.env.SENDER_EMAIL || "llmstxt@gmail.com" };
-    sendSmtpEmail.to = [{ "email": email }];
-    sendSmtpEmail.attachment = [{
-      "content": fileBuffer.toString('base64'),
-      "name": "llms.txt"
-    }];
-    
-    // Send the email with Brevo
-    await brevoClient.sendTransacEmail(sendSmtpEmail);
+    // Send the email
+    await transporter.sendMail(mailOptions);
     
     // Step 6: Return success response
     return res.status(200).json({ success: true, message: 'LLMs.txt generated and sent successfully' });
@@ -290,40 +292,56 @@ app.post('/api/subscribe', async (req, res) => {
       return res.status(400).json({ error: 'Email is required' });
     }
     
-    // Create a new SendSmtpEmail instance for newsletter subscription
-    let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+    // Send confirmation email
+    const mailOptions = {
+      from: process.env.SENDER_EMAIL || "llmstxt@gmail.com",
+      to: email,
+      subject: "Welcome to the LLMs.txt Newsletter",
+      text: `Hello,
+
+Thank you for subscribing to the LLMs.txt newsletter!
+
+You're now part of a forward-thinking community that's shaping how AI interacts with web content. We'll keep you informed about:
+
+• Latest AI content protection strategies
+• Updates to the LLMs.txt standard
+• Expert tips for optimizing your website for AI systems
+• Success stories from websites implementing LLMs.txt
+
+If you have any questions, simply reply to this email.
+
+Best regards,
+Garvit`,
+      html: `
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+  <header style="background: linear-gradient(135deg, #6C63FF, #5A52E0); padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
+    <h1 style="color: white; margin: 0;">Welcome to the LLMs.txt Newsletter</h1>
+  </header>
+  
+  <div style="padding: 20px; border: 1px solid #e1e1e1; border-top: none; border-radius: 0 0 8px 8px; background-color: white;">
+    <p>Hello,</p>
     
-    sendSmtpEmail.subject = "Welcome to the LLMs.txt Newsletter";
-    sendSmtpEmail.htmlContent = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-      <header style="background: linear-gradient(135deg, #6C63FF, #5A52E0); padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
-        <h1 style="color: white; margin: 0;">Welcome to the LLMs.txt Newsletter</h1>
-      </header>
-      
-      <div style="padding: 20px; border: 1px solid #e1e1e1; border-top: none; border-radius: 0 0 8px 8px; background-color: white;">
-        <p>Hello,</p>
-        
-        <p>Thank you for subscribing to the LLMs.txt newsletter!</p>
-        
-        <p>You're now part of a forward-thinking community that's shaping how AI interacts with web content. We'll keep you informed about:</p>
-        
-        <ul>
-          <li>Latest AI content protection strategies</li>
-          <li>Updates to the LLMs.txt standard</li>
-          <li>Expert tips for optimizing your website for AI systems</li>
-          <li>Success stories from websites implementing LLMs.txt</li>
-        </ul>
-        
-        <p>If you have any questions, simply reply to this email.</p>
-        
-        <p>Best regards,<br>Garvit</p>
-      </div>
-    </div>`;
-    sendSmtpEmail.sender = { "name": "LLMs.txt Generator", "email": process.env.SENDER_EMAIL || "llmstxt@gmail.com" };
-    sendSmtpEmail.to = [{ "email": email }];
+    <p>Thank you for subscribing to the LLMs.txt newsletter!</p>
     
-    // Send the email with Brevo
-    await brevoClient.sendTransacEmail(sendSmtpEmail);
+    <p>You're now part of a forward-thinking community that's shaping how AI interacts with web content. We'll keep you informed about:</p>
+    
+    <ul>
+      <li>Latest AI content protection strategies</li>
+      <li>Updates to the LLMs.txt standard</li>
+      <li>Expert tips for optimizing your website for AI systems</li>
+      <li>Success stories from websites implementing LLMs.txt</li>
+    </ul>
+    
+    <p>If you have any questions, simply reply to this email.</p>
+    
+    <p>Best regards,<br>Garvit</p>
+  </div>
+</div>
+      `
+    };
+    
+    // Send the email
+    await transporter.sendMail(mailOptions);
     
     return res.status(200).json({ success: true, message: 'Subscription successful' });
   } catch (error) {
