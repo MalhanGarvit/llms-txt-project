@@ -4,7 +4,8 @@
   "description": "A tool to generate LLMs.txt files for website documentation",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "echo 'No build step required'"
   },
   "dependencies": {
     "@getbrevo/brevo": "^2.2.0",
