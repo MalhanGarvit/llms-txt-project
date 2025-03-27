@@ -118,10 +118,10 @@ async function extractAndFormatUrls(sitemapXml, domain) {
         formattedUrls += `${index + 1}. ${url}\n`;
       });
       
-      // Limit to 50 URLs to avoid overwhelming the API
-      if (urls.length > 50) {
-        const truncatedUrls = formattedUrls.split('\n').slice(0, 52).join('\n');
-        return truncatedUrls + '\n\n[List truncated to 50 URLs]';
+      // Limit to 150 URLs to avoid overwhelming the API
+      if (urls.length > 150) {
+        const truncatedUrls = formattedUrls.split('\n').slice(0, 152).join('\n');
+        return truncatedUrls + '\n\n[List truncated to 150 URLs]';
       }
     } else {
       formattedUrls += "No valid URLs found in the sitemap.";
