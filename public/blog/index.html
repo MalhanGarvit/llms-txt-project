@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | LLMs.txt Generator</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XZVZG1427H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XZVZG1427H');
+</script>
+
+<!-- Mixpanel -->
+<script type="text/javascript">
+(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+
+mixpanel.init("16f9900d03a958ca11da118565aed556", {debug: true}); 
+mixpanel.track("Blog Index View");
+</script>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+<link rel="mask-icon" href="/images/favicon.svg" color="#6C63FF">
+<meta name="theme-color" content="#6C63FF">
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Learn about llms.txt files, AI crawling, and controlling how AI interacts with your website content. Articles and guides for SEO in the AI era.">
+<meta name="keywords" content="llms.txt blog, AI SEO, website AI guidelines, AI crawling, web content control, LLM SEO">
+<meta name="author" content="Garvit Malhan">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Meta Tags for social sharing -->
+<meta property="og:title" content="Blog | LLMs.txt Generator">
+<meta property="og:description" content="Learn about llms.txt files, AI crawling, and controlling how AI interacts with your website content. Articles and guides for SEO in the AI era.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://txtllms.com/blog/">
+<meta property="og:image" content="https://txtllms.com/images/og-image.jpg">
+
+<!-- Google Fonts - Space Grotesk for headings, Inter for body text -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Preload critical resources -->
+<link rel="preload" href="/images/og-image.jpg" as="image">
+
+<style>
+  /* ===== VARIABLES ===== */
+  :root {
+    /* Colors - Using the same palette as main site */
+    --primary: #6C63FF;
+    --primary-hover: #5A52E0;
+    --accent: #FF6B6B;
+    --background: #0A0B1E;
+    --surface: rgba(30, 32, 50, 0.95);
+    --text: #F5F7FF;
+    --text-secondary: #B4B7C5;
+    --border: rgba(255, 255, 255, 0.1);
+    --success: #4CAF50;
+  
+    /* Typography */
+    --heading-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Inter', sans-serif;
+  
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+  
+    /* Animations */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+  }
+
+  /* ===== RESET & BASE STYLES ===== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--body-font);
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    color: var(--primary-hover);
+  }
+  
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+  
+  .header {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  
+  .logo {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo:hover {
+    color: var(--text);
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+  
+  .nav-link:hover {
+    background-color: var(--surface);
+  }
+  
+  .nav-link.active {
+    background-color: var(--primary);
+    color: var(--text);
+  }
+  
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-family: var(--heading-font);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .page-description {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+  
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .blog-card {
+    background-color: var(--surface);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .blog-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .blog-card h2 {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  
+  .blog-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+  
+  .blog-meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .read-more {
+    display: inline-block;
+    margin-top: auto;
+    font-weight: 500;
+    transition: transform var(--transition-fast);
+  }
+  
+  .read-more:hover {
+    transform: translateX(5px);
+  }
+  
+  footer {
+    padding: 3rem 0;
+    background-color: rgba(15, 16, 33, 0.9);
+    margin-top: 3rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  
+  .footer-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      padding: 1.5rem 0;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header container">
+    <a href="/" class="logo">
+      <img src="/images/logo.svg" alt="LLMs.txt Logo" width="30" height="30">
+      LLMs.txt
+    </a>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/samples/" class="nav-link">Samples</a>
+      <a href="/blog/" class="nav-link active">Blog</a>
+    </div>
+  </header>
+  
+  <main class="container">
+    <header class="page-header">
+      <h1>Blog</h1>
+      <p class="page-description">Articles, guides, and insights about using llms.txt to control AI's access to your website content.</p>
+    </header>
+    
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <div class="blog-meta">July 30, 2025 · 4 min read</div>
+          <h2>How to Add llms.txt File to Your Website if You're Not a Techie</h2>
+          <p>Learn how to easily implement an llms.txt file on your website without any technical knowledge, giving you control over how AI interacts with your content.</p>
+          <a href="/blog/how-to-add-llmstxt-file.html" class="read-more">Read More →</a>
+        </div>
+      </article>
+      
+      <!-- More blog cards will be added as content is created -->
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <div class="blog-meta">Coming soon</div>
+          <h2>Understanding the llms.txt Standard for Website Owners</h2>
+          <p>A comprehensive guide to the emerging llms.txt standard and how it helps website owners control AI's access to their content.</p>
+          <span class="read-more" style="color: var(--text-secondary);">Coming Soon →</span>
+        </div>
+      </article>
+      
+      <article class="blog-card">
+        <div class="blog-card-content">
+          <div class="blog-meta">Coming soon</div>
+          <h2>5 Ways llms.txt Can Improve Your SEO in the AI Era</h2>
+          <p>Discover how implementing an llms.txt file can enhance your SEO strategy and improve visibility in AI-powered search results.</p>
+          <span class="read-more" style="color: var(--text-secondary);">Coming Soon →</span>
+        </div>
+      </article>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2025 LLMs.txt. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Lazy load JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Tracking page views more efficiently
+      const trackLinks = document.querySelectorAll('a');
+      trackLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (typeof mixpanel !== 'undefined') {
+            mixpanel.track('Link Click', {
+              'link_text': this.textContent.trim(),
+              'link_url': this.href
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html> 

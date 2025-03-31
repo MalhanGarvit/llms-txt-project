@@ -1,0 +1,20 @@
+{
+  "name": "llms-txt-generator",
+  "version": "1.0.0",
+  "description": "A tool to generate LLMs.txt files for website documentation",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "@getbrevo/brevo": "^2.2.0",
+    "@google/generative-ai": "^0.24.0",
+    "@sendgrid/mail": "^8.1.4",
+    "axios": "^1.8.2",
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2",
+    "nodemailer": "^6.10.0",
+    "xml2js": "^0.6.2"
+  }
+}

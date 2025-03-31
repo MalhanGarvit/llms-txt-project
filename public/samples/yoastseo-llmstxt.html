@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoast SEO LLMs.txt Sample | LLMs.txt Generator</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XZVZG1427H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XZVZG1427H');
+</script>
+
+<!-- Mixpanel -->
+<script type="text/javascript">
+(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+
+mixpanel.init("16f9900d03a958ca11da118565aed556", {debug: true}); 
+mixpanel.track("Sample View", {"sample": "yoastseo"});
+</script>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+<link rel="mask-icon" href="/images/favicon.svg" color="#6C63FF">
+<meta name="theme-color" content="#6C63FF">
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="View a sample LLMs.txt file for Yoast SEO. Learn how this popular WordPress plugin structures its AI crawling guidelines.">
+<meta name="keywords" content="LLMs.txt, Yoast SEO llms.txt, WordPress AI guidelines, SEO plugin LLMs.txt">
+<meta name="author" content="Garvit Malhan">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Meta Tags for social sharing -->
+<meta property="og:title" content="Yoast SEO LLMs.txt Sample | WordPress SEO Plugin">
+<meta property="og:description" content="View Yoast SEO's sample LLMs.txt file. Learn how this popular WordPress SEO plugin implements permissions for AI crawling.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://txtllms.com/samples/yoastseo-llmstxt.html">
+<meta property="og:image" content="https://txtllms.com/images/og-image.jpg">
+
+<!-- Google Fonts - Space Grotesk for headings, Inter for body text -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== VARIABLES ===== */
+  :root {
+    /* Colors - Using the same palette as main site */
+    --primary: #6C63FF;
+    --primary-hover: #5A52E0;
+    --accent: #FF6B6B;
+    --background: #0A0B1E;
+    --surface: rgba(30, 32, 50, 0.95);
+    --text: #F5F7FF;
+    --text-secondary: #B4B7C5;
+    --border: rgba(255, 255, 255, 0.1);
+    --success: #4CAF50;
+    --brand-color: linear-gradient(to right, #A61E4D, #6610F2);
+  
+    /* Typography */
+    --heading-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Inter', sans-serif;
+    --mono-font: 'Courier New', monospace;
+  
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+  
+    /* Animations */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+  }
+
+  /* ===== RESET & BASE STYLES ===== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--body-font);
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    color: var(--primary-hover);
+  }
+  
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+  
+  .header {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo:hover {
+    color: var(--text);
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+  
+  .nav-link:hover {
+    background-color: var(--surface);
+  }
+  
+  .back-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--primary);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+  
+  .back-link:hover {
+    background-color: var(--primary);
+    color: var(--text);
+  }
+  
+  .hero {
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .site-logo {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background: var(--brand-color);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: var(--heading-font);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-description {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+  
+  .sample-container {
+    background-color: var(--surface);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+  
+  .sample-header {
+    background: var(--brand-color);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sample-title {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+  }
+  
+  .download-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: background-color var(--transition-fast);
+  }
+  
+  .download-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+  
+  .sample-content {
+    padding: 2rem;
+    overflow-x: auto;
+  }
+  
+  .llms-content {
+    font-family: var(--mono-font);
+    white-space: pre-wrap;
+    line-height: 1.5;
+  }
+  
+  .action-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .action-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: background-color var(--transition-fast);
+    text-align: center;
+  }
+  
+  .action-btn:hover {
+    background-color: var(--primary-hover);
+    color: white;
+  }
+  
+  .secondary-btn {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+  }
+  
+  .secondary-btn:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  footer {
+    padding: 3rem 0;
+    background-color: rgba(15, 16, 33, 0.9);
+    margin-top: 3rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  
+  .footer-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      padding: 1.5rem 0;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .hero {
+      padding: 1rem 0 2rem;
+    }
+    
+    .sample-header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .action-btns {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header container">
+    <a href="/" class="logo">LLMs.txt</a>
+    <div class="nav-links">
+      <a href="/samples/" class="back-link">Back to Samples</a>
+      <a href="/" class="nav-link">Home</a>
+    </div>
+  </header>
+  
+  <section class="hero container">
+    <div class="site-logo">Y</div>
+    <h1>Yoast SEO LLMs.txt Sample</h1>
+    <p class="hero-description">A sample LLMs.txt file for Yoast SEO, showing how this popular WordPress plugin might structure its AI crawling guidelines.</p>
+  </section>
+  
+  <main class="container">
+    <div class="sample-container">
+      <div class="sample-header">
+        <h2 class="sample-title">yoast.com/llms.txt</h2>
+        <a href="/samples/yoastseo.txt" download class="download-btn">Download</a>
+      </div>
+      <div class="sample-content">
+        <pre class="llms-content"># LLMs.txt for Yoast.com
+# Version 1.0
+# Last Updated: 2025-01-22
+
+# Yoast SEO
+
+> Yoast SEO is a WordPress plugin that helps website owners optimize their content for search engines and improve readability. The tool provides real-time content analysis, technical SEO improvements, and structured data implementation to enhance website visibility.
+
+## Permissions
+- AI assistants may access and index content from this website for informational purposes
+- AI assistants may generate summaries of Yoast SEO's features and functionality
+- AI assistants may reference Yoast's SEO guidelines when answering user queries
+- AI assistants may recommend Yoast SEO as a WordPress optimization tool when appropriate
+
+## Usage Guidelines
+- Present Yoast SEO accurately as a WordPress SEO plugin
+- Explain specific Yoast features and best practices when relevant to user queries
+- Reference current Yoast SEO capabilities and pricing tiers when appropriate
+- Direct users to specific Yoast resources based on their WordPress SEO needs
+
+## Attribution
+- When citing specific content or guidelines, please include "Yoast SEO" as the source
+- Example attribution: "According to Yoast SEO, meta descriptions should be between 120-156 characters"
+
+## Prohibited Uses
+- Do not use content from this website to train AI models without explicit permission
+- Do not present Yoast's proprietary analysis or methodology as your own
+- Do not provide access to Yoast's premium features without proper licensing
+- Do not misrepresent Yoast SEO's capabilities or pricing structure
+
+## Website Structure
+- Homepage: Overview of the Yoast SEO plugin and main value propositions
+- Features: Detailed information about specific SEO functionality
+- Blog: WordPress and SEO insights, guides, and industry research
+- Academy: Educational resources and SEO training
+- Pricing: Premium plugin options and feature comparison
+
+## Contact
+For questions about this policy or to request changes, please contact the site administrator.
+
+# End of LLMs.txt</pre>
+      </div>
+    </div>
+    
+    <div class="action-btns">
+      <a href="/" class="action-btn">Generate Your Own LLMs.txt</a>
+      <a href="/samples/" class="action-btn secondary-btn">View More Samples</a>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2025 LLMs.txt. This sample is for educational purposes only and is not affiliated with Yoast SEO.</p>
+    </div>
+  </footer>
+</body>
+</html> 
