@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32">
+  <!-- Document background -->
+  <rect x="15" y="10" width="70" height="80" rx="5" ry="5" fill="#6C63FF" />
+  
+  <!-- Document fold -->
+  <path d="M60 10 L85 35 L60 35 Z" fill="#5A52E0" />
+  
+  <!-- LLMs Text -->
+  <text x="28" y="65" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="24">LLMs</text>
+</svg> 

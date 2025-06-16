@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "name": "LLMs.txt Generator",
+  "description": "A tool to generate LLMs.txt files for controlling how AI systems interact with website content",
+  "llms_txt_url": "https://txtllms.com/llms.txt",
+  "contact": {
+    "name": "Garvit Malhan",
+    "role": "AI SEO Strategist",
+    "email": "llmstxt@gmail.com"
+  },
+  "purpose": {
+    "primary": "tool",
+    "secondary": ["information", "education"]
+  },
+  "sections": [
+    {
+      "name": "Homepage",
+      "description": "LLMs.txt generator tool and main information",
+      "url": "https://txtllms.com/"
+    },
+    {
+      "name": "Features",
+      "description": "Why use LLMs.txt for your website",
+      "url": "https://txtllms.com/#features"
+    },
+    {
+      "name": "Testimonials",
+      "description": "User experiences with the LLMs.txt standard",
+      "url": "https://txtllms.com/#testimonials"
+    }
+  ],
+  "apis": [
+    {
+      "name": "Generate LLMs.txt",
+      "description": "Generates a custom LLMs.txt file for a website",
+      "url": "https://txtllms.com/api/generate",
+      "type": "POST",
+      "not_for_ai_use": true
+    },
+    {
+      "name": "Newsletter Subscription",
+      "description": "Subscribe to the LLMs.txt newsletter",
+      "url": "https://txtllms.com/api/subscribe",
+      "type": "POST",
+      "not_for_ai_use": true
+    }
+  ],
+  "usage_guidelines": {
+    "allowed": [
+      "Summarizing the website's functionality",
+      "Explaining the LLMs.txt standard",
+      "Directing users to the tool for generating their own LLMs.txt"
+    ],
+    "disallowed": [
+      "Training AI models on website content",
+      "Scraping user data",
+      "Misrepresenting the site's functionality"
+    ]
+  },
+  "data_practices": {
+    "collects_personal_data": true,
+    "data_categories": ["email", "website domain"],
+    "data_purposes": ["service provision", "communication"],
+    "data_shared_with_third_parties": false
+  }
+} 

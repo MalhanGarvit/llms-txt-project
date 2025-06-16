@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scalenut LLMs.txt Sample | LLMs.txt Generator</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XZVZG1427H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XZVZG1427H');
+</script>
+
+<!-- Mixpanel -->
+<script type="text/javascript">
+(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
+
+mixpanel.init("16f9900d03a958ca11da118565aed556", {debug: true}); 
+mixpanel.track("Sample View", {"sample": "scalenut"});
+</script>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="icon" type="image/png" href="/images/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+<link rel="mask-icon" href="/images/favicon.svg" color="#6C63FF">
+<meta name="theme-color" content="#6C63FF">
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="View a sample LLMs.txt file for Scalenut. Learn how this AI-powered content platform structures its AI crawling guidelines.">
+<meta name="keywords" content="LLMs.txt, Scalenut llms.txt, AI content platform, content marketing AI guidelines">
+<meta name="author" content="Garvit Malhan">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph Meta Tags for social sharing -->
+<meta property="og:title" content="Scalenut LLMs.txt Sample | AI Content Platform">
+<meta property="og:description" content="View Scalenut's sample LLMs.txt file. Learn how this AI content platform implements permissions for AI crawling.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://txtllms.com/samples/scalenut-llmstxt.html">
+<meta property="og:image" content="https://txtllms.com/images/og-image.jpg">
+
+<!-- Google Fonts - Space Grotesk for headings, Inter for body text -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== VARIABLES ===== */
+  :root {
+    /* Colors - Using the same palette as main site */
+    --primary: #6C63FF;
+    --primary-hover: #5A52E0;
+    --accent: #FF6B6B;
+    --background: #0A0B1E;
+    --surface: rgba(30, 32, 50, 0.95);
+    --text: #F5F7FF;
+    --text-secondary: #B4B7C5;
+    --border: rgba(255, 255, 255, 0.1);
+    --success: #4CAF50;
+    --brand-color: linear-gradient(to right, #00C9FF, #92FE9D);
+  
+    /* Typography */
+    --heading-font: 'Space Grotesk', sans-serif;
+    --body-font: 'Inter', sans-serif;
+    --mono-font: 'Courier New', monospace;
+  
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+  
+    /* Animations */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+  }
+
+  /* ===== RESET & BASE STYLES ===== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--body-font);
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    color: var(--primary-hover);
+  }
+  
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+  
+  .header {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .logo:hover {
+    color: var(--text);
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+  
+  .nav-link:hover {
+    background-color: var(--surface);
+  }
+  
+  .back-link {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--primary);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+  
+  .back-link:hover {
+    background-color: var(--primary);
+    color: var(--text);
+  }
+  
+  .hero {
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .site-logo {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background: var(--brand-color);
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--heading-font);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: var(--heading-font);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-description {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+  
+  .sample-container {
+    background-color: var(--surface);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+  
+  .sample-header {
+    background: var(--brand-color);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sample-title {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
+  }
+  
+  .download-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: background-color var(--transition-fast);
+  }
+  
+  .download-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+  }
+  
+  .sample-content {
+    padding: 2rem;
+    overflow-x: auto;
+  }
+  
+  .llms-content {
+    font-family: var(--mono-font);
+    white-space: pre-wrap;
+    line-height: 1.5;
+  }
+  
+  .action-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .action-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: background-color var(--transition-fast);
+    text-align: center;
+  }
+  
+  .action-btn:hover {
+    background-color: var(--primary-hover);
+    color: white;
+  }
+  
+  .secondary-btn {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+  }
+  
+  .secondary-btn:hover {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  footer {
+    padding: 3rem 0;
+    background-color: rgba(15, 16, 33, 0.9);
+    margin-top: 3rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  
+  .footer-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      padding: 1.5rem 0;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .nav-links {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .hero {
+      padding: 1rem 0 2rem;
+    }
+    
+    .sample-header {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .action-btns {
+      flex-direction: column;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="header container">
+    <a href="/" class="logo">LLMs.txt</a>
+    <div class="nav-links">
+      <a href="/samples/" class="back-link">Back to Samples</a>
+      <a href="/" class="nav-link">Home</a>
+    </div>
+  </header>
+  
+  <section class="hero container">
+    <div class="site-logo">S</div>
+    <h1>Scalenut LLMs.txt Sample</h1>
+    <p class="hero-description">A sample LLMs.txt file for Scalenut, showing how this AI-powered content platform might structure its AI crawling guidelines.</p>
+  </section>
+  
+  <main class="container">
+    <div class="sample-container">
+      <div class="sample-header">
+        <h2 class="sample-title">scalenut.com/llms.txt</h2>
+        <a href="/samples/scalenut.txt" download class="download-btn">Download</a>
+      </div>
+      <div class="sample-content">
+        <pre class="llms-content"># LLMs.txt for Scalenut.com
+# Version 1.0
+# Last Updated: 2025-02-22
+
+Scalenut is an AI-powered SEO and content marketing platform designed to streamline content creation and optimization. The platform offers features such as AI copywriting, SEO optimization, and competitor analysis. It aims to help businesses and individuals create high-ranking, engaging content efficiently. Scalenut empowers users to research, plan, and generate SEO-friendly content with AI assistance.
+
+> Scalenut's website provides information about its platform, features, use cases, and resources. It includes detailed comparisons with competitor tools, a blog, case studies, and a learning center to help users understand and effectively use the Scalenut platform for their content marketing and SEO needs. The site also promotes its affiliate program and offers various SEO tools.
+
+## Platform and Features
+
+- [Scalenut](https://www.scalenut.com): The main page of Scalenut, likely providing an overview of the platform and its key benefits.
+- [Features](https://www.scalenut.com/features): Details the various features offered by the Scalenut platform, describing its capabilities in SEO and content creation.
+- [AI Copywriting](https://www.scalenut.com/ai-copywriting): Information on Scalenut's AI copywriting capabilities.
+- [AI Web Optimizer](https://www.scalenut.com/ai-web-optimizer): Details the functionality and benefits of Scalenut's AI web optimizer tool.
+- [AI Writer](https://www.scalenut.com/ai-writer): Information about Scalenut's AI writing tool and its features.
+- [Platform Overview](https://www.scalenut.com/platform-overview): Provides an in-depth look at the Scalenut platform, its interface, and overall functionality.
+- [SEO Automation](https://www.scalenut.com/seo-automation): Describes how Scalenut automates SEO processes.
+- [SEO Content](https://www.scalenut.com/seo-content): General information about SEO content and how Scalenut can assist in its creation.
+- [SEO Content 2](https://www.scalenut.com/seo-content-2): Another page with information about SEO content creation with Scalenut.
+- [SEO Content LP](https://www.scalenut.com/seo-content-lp): Landing page focused on SEO content features of Scalenut.
+- [SEO Optimizer](https://www.scalenut.com/seo-optimizer): Details about the SEO optimization features of Scalenut.
+- [On Page Pro](https://www.scalenut.com/on-page-pro): Information on Scalenut's On-Page optimization tool.
+- [CruiseMode LP](https://www.scalenut.com/cruisemode_lp): Landing page for Scalenut's Cruise Mode feature, an automated blog writer.
+
+## SEO Tools
+
+- [Tools](https://www.scalenut.com/tools): A directory page for various SEO tools offered by Scalenut.
+- [Tools LP](https://www.scalenut.com/tools-lp): A landing page promoting free SEO tools offered by Scalenut.
+- [301 Redirect Checker](https://www.scalenut.com/seo-tools/301-redirect-checker): Tool to check 301 redirects on a website.
+- [CSS Minifier](https://www.scalenut.com/seo-tools/css-minifier): Tool to minify CSS code for better website performance
+- [Hreflang Checker](https://www.scalenut.com/seo-tools/href-lang-checker): Tool to check hreflang tag implementation on a website.
+- [HTML Compressor](https://www.scalenut.com/seo-tools/html-compressor): Tool to compress HTML code.
+- [HTML Minifier](https://www.scalenut.com/seo-tools/html-minifier): Tool to minify HTML code.
+- [JavaScript Minifier](https://www.scalenut.com/seo-tools/javascript-minifier): Tool to minify JavaScript code.
+- [Keyword Clustering Tool](https://www.scalenut.com/seo-tools/keyword-clustering-tool): Tool to cluster keywords based on search intent.
+- [Keyword Density Checker](https://www.scalenut.com/seo-tools/keyword-density-checker): Tool to check keyword density in content.
+- [Keyword Finder](https://www.scalenut.com/seo-tools/keyword-finder): Tool to find relevant keywords for SEO.
+- [Keyword Rank Checker](https://www.scalenut.com/seo-tools/keyword-rank-checker): Tool to check keyword rankings in search engines.
+- [Long Tail Keywords](https://www.scalenut.com/seo-tools/long-tail-keywords): Information about finding long-tail keywords.
+- [Onpage SEO Checker](https://www.scalenut.com/seo-tools/onpage-seo-checker): Tool to check on-page SEO elements.
+- [PageSpeed](https://www.scalenut.com/seo-tools/pagespeed): Tool to analyze website page speed.
+- [Redirection Checker](https://www.scalenut.com/seo-tools/redirection-checker): Tool to check website redirections.
+- [SEO Analyzer](https://www.scalenut.com/seo-tools/seo-analyzer): Tool for analyzing website SEO performance.
+- [Sitemap Generator](https://www.scalenut.com/seo-tools/sitemap-generator): Tool for generating sitemaps.
+- [Topic Cluster Tool](https://www.scalenut.com/seo-tools/topic-cluster-tool): Tool to create topic clusters for SEO.
+- [AI Content Detector](https://www.scalenut.com/ai-content-detector): Tool to detect AI-generated content
+
+## Comparisons
+
+- [Comparisons](https://www.scalenut.com/comparisons): A landing page listing comparisons between Scalenut and other SEO and content creation tools.
+- [Anyword vs Scalenut](https://www.scalenut.com/anyword-vs-scalenut): Comparison between Anyword and Scalenut.
+- [Article Forge vs Scalenut](https://www.scalenut.com/articleforge-vs-scalenut): Comparison between Article Forge and Scalenut.
+- [Autoblogging AI vs Scalenut](https://www.scalenut.com/autoblogging-ai-vs-scalenut): Comparison between Autoblogging AI and Scalenut.
+- [Clearscope vs Scalenut](https://www.scalenut.com/clearscope-vs-scalenut): Comparison between Clearscope and Scalenut.
+- [ContentShake vs Scalenut](https://www.scalenut.com/contentshake-vs-scalenut): Comparison between ContentShake and Scalenut.
+- [CopyAI vs Scalenut](https://www.scalenut.com/copyai-vs-scalenut): Comparison between CopyAI and Scalenut.
+- [Copysmith vs Scalenut](https://www.scalenut.com/copysmith-vs-scalenut): Comparison between Copysmith and Scalenut.
+ -[Copysmith vs Scalenut Comparison](https://www.scalenut.com/comparisons/copysmith-vs-scalenut): Another comparison page between Copysmith and Scalenut
+- [Frase vs Scalenut](https://www.scalenut.com/frase-vs-scalenut): Comparison between Frase and Scalenut.
+- [Frase vs Scalenut 2](https://www.scalenut.com/frase-vs-scalenut-2): Another comparison between Frase and Scalenut.
+- [FraseAI vs Scalenut LP](https://www.scalenut.com/fraseai-vs-scalenut-lp): Landing page comparing FraseAI with Scalenut.
+- [GrowthBar vs Scalenut](https://www.scalenut.com/growthbar-vs-scalenut): Comparison between GrowthBar and Scalenut.
+- [Jasper vs SurferSEO vs Scalenut](https://www.scalenut.com/jasper-surferseo-vs-scalenut): A three-way comparison involving Jasper, SurferSEO, and Scalenut.
+- [Jasper vs Scalenut](https://www.scalenut.com/jasper-vs-scalenut): Comparison between Jasper and Scalenut.
+- [Jasper vs Scalenut 2](https://www.scalenut.com/jasper-vs-scalenut-2): Another comparison page between Jasper and Scalenut
+-[Scalenut vs Jasper AI](https://www.scalenut.com/comparisons/scalenut-vs-jasper-ai): Another page in the comparison series.
+
+- [Koala vs Scalenut](https://www.scalenut.com/koala-vs-scalenut): Comparison between Koala and Scalenut.
+- [Longshot AI vs Scalenut](https://www.scalenut.com/comparisons/longshot-ai-vs-scalenut): Comparison page between Longshot AI and Scalenut.
+- [MarketMuse vs Scalenut](https://www.scalenut.com/marketmuse-vs-scalenut): Comparison between MarketMuse and Scalenut.
+-[Scalenut vs Marketmuse](https://www.scalenut.com/comparisons/scalenut-vs-marketmuse): Another comparison page
+
+- [NeuronWriter vs Scalenut](https://www.scalenut.com/neuronwriter-vs-scalenut): Comparison between NeuronWriter and Scalenut.
+-[Scalenut vs Neuron Writer](https://www.scalenut.com/comparisons/scalenut-vs-neuron-writer): Another comparison page
+- [Outranking vs Scalenut](https://www.scalenut.com/outranking-vs-scalenut): Comparison between Outranking and Scalenut.
+-[Scalenut vs Outranking](https://www.scalenut.com/comparisons/scalenut-vs-outranking): Another comparison page
+- [Page Optimizer Pro vs Scalenut](https://www.scalenut.com/page-optimizer-pro-vs-scalenut): Comparison between Page Optimizer Pro and Scalenut.
+-[Scalenut vs Page Optimizer Pro](https://www.scalenut.com/comparisons/scalenut-vs-page-optimizer-pro): Another Comparison Page
+- [Rytr vs Scalenut](https://www.scalenut.com/rytr-vs-scalenut): Comparison between Rytr and Scalenut.
+-[Scalenut vs Rytr](https://www.scalenut.com/comparisons/scalenut-vs-rytr):Comparison Page
+- [SE Ranking vs Scalenut](https://www.scalenut.com/se-ranking-vs-scalenut): Comparison between SE Ranking and Scalenut.
+-[Scalenut vs Seranking](https://www.scalenut.com/comparisons/scalenut-vs-seranking):Comparison Page
+- [Surfer SEO vs Scalenut](https://www.scalenut.com/surfer-seo-vs-scalenut): Comparison between Surfer SEO and Scalenut.
+- [Surfer SEO vs Scalenut 2](https://www.scalenut.com/surfer-seo-vs-scalenut-2): Another comparison between Surfer SEO and Scalenut.
+- [Surfer SEO vs Scalenut CN](https://www.scalenut.com/surfer-seo-vs-scalenut-cn): Comparison between Surfer SEO and Scalenut in Chinese.
+- [Surfer SEO vs Scalenut CN 2](https://www.scalenut.com/surfer-seo-vs-scalenut-cn-2): Another comparison between Surfer SEO and Scalenut in Chinese.
+- [Surfer SEO vs Scalenut LP](https://www.scalenut.com/surfer-seo-vs-scalenut-lp): Landing page comparing Surfer SEO and Scalenut.
+-[Scalenut vs Surfer SEO](https://www.scalenut.com/comparisons/scalenut-vs-surfer-seo): Comparison Page
+- [WriterZen vs Scalenut](https://www.scalenut.com/writerzen-vs-scalenut): Comparison between WriterZen and Scalenut.
+-[Scalenut vs Writer Zen](https://www.scalenut.com/comparisons/scalenut-vs-writer-zen): Comparison page
+- [Writesonic vs Scalenut](https://www.scalenut.com/writesonic-vs-scalenut): Comparison between Writesonic and Scalenut.
+-[Writesonic vs Scalenut](https://www.scalenut.com/comparisons/writesonic-vs-scalenut):Another Comparison Page
+- [SEMrush vs Scalenut](https://www.scalenut.com/comparisons/scalenut-vs-searchmetrics): Another comparison page
+-[Scalenut vs ArticleForge](https://www.scalenut.com/comparisons/scalenut-vs-articleforge): Comparison
+-[Scalenut vs Brightedge](https://www.scalenut.com/comparisons/scalenut-vs-brightedge): Comparison
+-[Scalenut vs Clearscope](https://www.scalenut.com/comparisons/scalenut-vs-clearscope):Comparison
+-[Scalenut vs Conductor](https://www.scalenut.com/comparisons/scalenut-vs-conductor):Comparison
+-[Scalenut vs Copy AI](https://www.scalenut.com/comparisons/scalenut-vs-copy-ai):Comparison
+-[Scalenut vs Frase](https://www.scalenut.com/comparisons/scalenut-vs-frase):Comparison
+-[Scalenut vs Growthbar](https://www.scalenut.com/comparisons/scalenut-vs-growthbar):Comparison
+-[Scalenut vs Moz](https://www.scalenut.com/comparisons/scalenut-vs-moz):Comparison
+-[Scalenut vs Searchmetrics](https://www.scalenut.com/comparisons/scalenut-vs-searchmetrics):Comparison
+-[Scalenut vs Seo Clarity](https://www.scalenut.com/comparisons/scalenut-vs-seo-clarity):Comparison
+-[Scalenut vs Thruuu](https://www.scalenut.com/comparisons/scalenut-vs-thruuu):Comparison
+-[Scalenut vs Writecream](https://www.scalenut.com/comparisons/scalenut-vs-writecream):Comparison
+-[Simplified vs Scalenut](https://www.scalenut.com/comparisons/simplified-vs-scalenut):Comparison
+
+## Blog
+
+- [Blogs](https://www.scalenut.com/blogs): Main blog page for Scalenut.
+- [Blog Generator](https://www.scalenut.com/blog-generator): Information page about Scalenut's blog generator tool.
+- [Blog Categories](https://www.scalenut.com/blog-categories/alternatives): Listing page for blog posts categorized under "Alternatives".
+- [Blog Categories](https://www.scalenut.com/blog-categories/artificial-intelligence): Listing page for blog posts categorized under "Artificial Intelligence".
+- [Blog Categories](https://www.scalenut.com/blog-categories/black-friday): Listing page for blog posts categorized under "Black Friday".
+- [Blog Categories](https://www.scalenut.com/blog-categories/comparison): Listing page for blog posts categorized under "Comparison".
+- [Blog Categories](https://www.scalenut.com/blog-categories/content-writing): Listing page for blog posts categorized under "Content Writing".
+- [Blog Categories](https://www.scalenut.com/blog-categories/design): Listing page for blog posts categorized under "Design".
+- [Blog Categories](https://www.scalenut.com/blog-categories/entrepreneurship): Listing page for blog posts categorized under "Entrepreneurship".
+- [Blog Categories](https://www.scalenut.com/blog-categories/google-updates): Listing page for blog posts categorized under "Google Updates".
+- [Blog Categories](https://www.scalenut.com/blog-categories/marketing): Listing page for blog posts categorized under "Marketing".
+- [Blog Categories](https://www.scalenut.com/blog-categories/podcast): Listing page for blog posts categorized under "Podcast".
+- [Blog Categories](https://www.scalenut.com/blog-categories/productivity): Listing page for blog posts categorized under "Productivity".
+- [Blog Categories](https://www.scalenut.com/blog-categories/seo): Listing page for blog posts categorized under "SEO".
+- [Blog Categories](https://www.scalenut.com/blog-categories/technology): Listing page for blog posts categorized under "Technology".
+
+## Blog Tags
+
+- [Blog Tags](https://www.scalenut.com/blog-tags/best-seo-tools): Listing page for blog posts tagged with "best-seo-tools".
+- [Blog Tags](https://www.scalenut.com/blog-tags/branding): Listing page for blog posts tagged with "branding".
+- [Blog Tags](https://www.scalenut.com/blog-tags/comparison): Listing page for blog posts tagged with "comparison".
+- [Blog Tags](https://www.scalenut.com/blog-tags/content-marketing): Listing page for blog posts tagged with "content-marketing".
+- [Blog Tags](https://www.scalenut.com/blog-tags/content-strategy): Listing page for blog posts tagged with "content-strategy".
+- [Blog Tags](https://www.scalenut.com/blog-tags/content-writing): Listing page for blog posts tagged with "content-writing".
+- [Blog Tags](https://www.scalenut.com/blog-tags/entrepreneurship): Listing page for blog posts tagged with "entrepreneurship".
+- [Blog Tags](https://www.scalenut.com/blog-tags/freelancers): Listing page for blog posts tagged with "freelancers".
+- [Blog Tags](https://www.scalenut.com/blog-tags/graphic-designing): Listing page for blog posts tagged with "graphic-designing".
+- [Blog Tags](https://www.scalenut.com/blog-tags/onpage-seo): Listing page for blog posts tagged with "onpage-seo".
+- [Blog Tags](https://www.scalenut.com/blog-tags/reviews): Listing page for blog posts tagged with "reviews".
+- [Blog Tags](https://www.scalenut.com/blog-tags/seo): Listing page for blog posts tagged with "seo".
+- [Blog Tags](https://www.scalenut.com/blog-tags/seo-assistant): Listing page for blog posts tagged with "seo-assistant".
+- [Blog Tags](https://www.scalenut.com/blog-tags/seo-for-industry): Listing page for blog posts tagged with "seo-for-industry".
+- [Blog Tags](https://www.scalenut.com/blog-tags/social-media): Listing page for blog posts tagged with "social-media".
+- [Blog Tags](https://www.scalenut.com/blog-tags/technology): Listing page for blog posts tagged with "technology".
+- [Blog Tags](https://www.scalenut.com/blog-tags/video-marketing): Listing page for blog posts tagged with "video-marketing".
+- [Blog Tags](https://www.scalenut.com/blog-tags/visual-identity): Listing page for blog posts tagged with "visual-identity".
+- [Blog Tags](https://www.scalenut.com/blog-tags/web-design): Listing page for blog posts tagged with "web-design".
+
+## Case Studies
+
+- [Case Studies](https://www.scalenut.com/case-studies): Main page showcasing various case studies.
+- [18x Organic Traffic](https://www.scalenut.com/case-studies/18x-organic-traffic): Case study focusing on an 18x increase in organic traffic.
+- [2M Monthly Visitors](https://www.scalenut.com/case-studies/2m-monthly-visitors): Case study showcasing a website achieving 2 million monthly visitors.
+- [Awesome Cuisine Traffic Surge](https://www.scalenut.com/case-studies/Awesome-cuisine-traffic-surge): Case study detailing a traffic surge for Awesome Cuisine.
+- [Buzet](https://www.scalenut.com/case-studies/buzet): A case study for Buzet.
+- [Creative Labs](https://www.scalenut.com/case-studies/creative-labs): A case study for Creative Labs.
+- [Decisive Marketer](https://www.scalenut.com/case-studies/decisive-marketer): A case study for Decisive Marketer.
+- [Farmpure](https://www.scalenut.com/case-studies/farmpure): A case study for Farmpure.
+- [Figflare](https://www.scalenut.com/case-studies/figflare): A case study for Figflare.
+- [Foyr](https://www.scalenut.com/case-studies/foyr): A case study for Foyr.
+- [Jungleworks](https://www.scalenut.com/case-studies/jungleworks): A case study for Jungleworks.
+- [Leap Scholar](https://www.scalenut.com/case-studies/leap-scholar): A case study for Leap Scholar.
+- [MIT Plus](https://www.scalenut.com/case-studies/mit-plus): A case study for MIT Plus.
+- [Monk Marketers](https://www.scalenut.com/case-studies/monk-marketers): A case study for Monk Marketers.
+- [Mosaic](https://www.scalenut.com/case-studies/mosaic): A case study for Mosaic.
+- [Noel](https://www.scalenut.com/case-studies/noel): A case study for Noel.
+- [Noelle Salon](https://www.scalenut.com/case-studies/noelle-salon): A case study for Noelle Salon.
+- [Rise Digital Space](https://www.scalenut.com/case-studies/rise-digital-space): A case study for Rise Digital Space.
+- [Sonata Music School](https://www.scalenut.com/case-studies/sonata-music-school): A case study for Sonata Music School.
+- [Taha Khan](https://www.scalenut.com/case-studies/taha-khan): A case study for Taha Khan.
+
+## eBooks
+
+- [Ebooks](https://www.scalenut.com/ebooks): Main Page Showcasing All Available eBooks.
+- [Definitive SEO Audit](https://www.scalenut.com/ebooks/definitive-seo-audit): Ebook about conducting a definitive SEO audit.
+- [Detailed Guide To SEO Topical Authority](https://www.scalenut.com/ebooks/detailed-guide-to-seo-topical-authority): An Ebook about building topical authority.
+- [Guide To Optimizing Your Travel Site](https://www.scalenut.com/ebooks/guide-to-optimizing-your-travel-site): Guide to optimizing travel websites for SEO.
+- [Guide To Writing Curated Blogs](https://www.scalenut.com/ebooks/guide-to-writing-curated-blogs): Guide on how to write curated blog posts.
+- [How To Blog](https://www.scalenut.com/ebooks/how-to-blog): Ebook providing guidance on blogging.
+- [How To Create A Solid Outline](https://www.scalenut.com/ebooks/how-to-create-a-solid-outline): Guide to creating effective content outlines.
+- [How To Write A Comparison Blog](https://www.scalenut.com/ebooks/how-to-write-a-comparison-blog): Ebook about writing effective comparison blogs.
+- [Pillar Page Strategy Guide](https://www.scalenut.com/ebooks/pillar-page-strategy-guide): Ebook providing guidance on Pillar Page strategy.
+- [The Ultimate Blog Writing Checklist](https://www.scalenut.com/ebooks/the-ultimate-blog-writing-checklist): Checklist for writing blog posts.
+- [The Ultimate On Page SEO Checklist](https://www.scalenut.com/ebooks/the-ultimate-on-page-seo-checklist): Checklist for on-page SEO.
+- [Ultimate Guide To Building Successful Content Marketing Plans](https://www.scalenut.com/ebooks/ultimate-guide-to-building-successful-content-marketing-plans): Ebook for building successful content marketing plans.
+- [Using AI To Scale Content Marketing](https://www.scalenut.com/ebooks/using-ai-to-scale-content-marketing): Ebook about leveraging AI for scaling content marketing.
+
+## Bootcamp (Learning Resources)
+
+- [Bootcamp](https://www.scalenut.com/bootcamp/adding-images-and-videos): Guide on adding images and videos within Scalenut.
+- [AI Document Creation](https://www.scalenut.com/bootcamp/ai-document-creation): Guide on creating AI-powered documents.
+- [AI Writing In Article Writer](https://www.scalenut.com/bootcamp/ai-writing-in-article-writer): Guide on using AI writing features in the article writer.
+- [Brief Creation With Article Writer](https://www.scalenut.com/bootcamp/brief-creation-with-article-writer): Guide on creating briefs with the article writer.
+- [Configuring AI Setting](https://www.scalenut.com/bootcamp/configuring-ai-setting): How to configure AI settings in Scalenut.
+- [Content Of Research Report](https://www.scalenut.com/bootcamp/content-of-research-report): Understanding the content of research reports.
+- [Content Quality Optimization](https://www.scalenut.com/bootcamp/content-quality-optimization): Optimizing content quality within Scalenut.
+- [Cruise Mode A 5-Minute Blog Writer](https://www.scalenut.com/bootcamp/cruise-mode-a-5-minute-blog-writer): A quick guide to the Cruise Mode blog writer.
+- [Dashboard Walkthrough](https://www.scalenut.com/bootcamp/dashboard-walkthrough): Tutorial for navigating the Scalenut dashboard.
+- [Detect and Humanize](https://www.scalenut.com/bootcamp/detect-and-humanize): Guide on using the "detect and humanize" feature.
+- [Formatting With Selection Toolbar](https://www.scalenut.com/bootcamp/formatting-with-selection-toolbar): Guide to formatting options available in editor
+- [Getting The Best Out Of Scalenuts AI 2](https://www.scalenut.com/bootcamp/getting-the-best-out-of-scalenuts-ai-2): Guide on getting best performance out of Scalenut's AI
+- [How To Add Custom Source URL In Cruise Mode](https://www.scalenut.com/bootcamp/how-to-add-custom-source-url-in-cruise-mode): Guide on adding custom URLs to Cruise Mode.
+- [How To Use The Interlinking Feature](https://www.scalenut.com/bootcamp/how-to-use-the-interlinking-feature): Explanation on how to interlink articles within Scalenut.
+- [How To Use The Write Ahead Button](https://www.scalenut.com/bootcamp/how-to-use-the-write-ahead-button): Guide on how to use the "Write Ahead Button".
+- [Introduction To Scalenut](https://www.scalenut.com/bootcamp/introduction-to-scalenut): Introduction and overview of Scalenut.
+- [Keyword Planner](https://www.scalenut.com/bootcamp/keyword-planner): Information on using the in-platform keyword planner.
+- [Link Manager](https://www.scalenut.com/bootcamp/link-manager): Instruction on how to use link manager
+- [Manage Your Scalenut Account](https://www.scalenut.com/bootcamp/manage-your-scalenut-account): Information on managing the account
+- [Onpage Pro](https://www.scalenut.com/bootcamp/onpage-pro): Education Regarding OnPage Pro features.
+- [Paraphrasing With Scalenuts AI](https://www.scalenut.com/bootcamp/paraphrasing-with-scalenuts-ai): Guide on using AI for paraphrasing content.
+- [Plagiarism Checker](https://www.scalenut.com/bootcamp/plagiarism-checker): Guide on using the plagiarism checker.
+- [Scalenut AI Writing Capabilities And AI Tool](https://www.scalenut.com/bootcamp/scalenut-ai-writing-capabilities-and-ai-tool): Guide on understanding Scalenut's AI writing capabilities
+- [SEO Reports Management](https://www.scalenut.com/bootcamp/seo-reports-management): Explains the features of SEO report management process
+- [SEO Research Document Creation](https://www.scalenut.com/bootcamp/seo-research-document-creation): Creating SEO friendly documents
+- [SERP Ideas](https://www.scalenut.com/bootcamp/serp-ideas): Education Regarding getting ideas from SERP analysis.
+- [Shopify Integration](https://www.scalenut.com/bootcamp/shopify-integration): How to Integrate Scalenut with Shopify.
+- [Traffic Analyser](https://www.scalenut.com/bootcamp/traffic-analyser): Guide on using the traffic analyzer tool within the platform
+- [Wordpress Publisher](https://www.scalenut.com/bootcamp/wordpress-publisher): How to use WordPress Publisher feature.
+
+## Templates
+
+- [Templates](https://www.scalenut.com/templates): A listing page of available content templates.
+- [Blog Post Template](https://www.scalenut.com/templates/blog-post-template): Template for writing a blog post
+- [Content Marketing Plan Template](https://www.scalenut.com/templates/content-marketing-plan-template): Provides content marketing template
+- [Editorial Calendar](https://www.scalenut.com/templates/editorial-calendar): Provides an editorial calendar
+- [Free Case Study Template](https://www.scalenut.com/templates/free-case-study-template): Provides a free case study to use
+- [Free Content Brief Template](https://www.scalenut.com/templates/free-content-brief-template): Provides a content brief template
+- [Free Content Calendar Template](https://www.scalenut.com/templates/free-content-calendar-template): Provides a free content calendar to use
+- [Free Content Strategy Template](https://www.scalenut.com/templates/free-content-strategy-template): Provides a content strategy template
+- [Free Keyword Research Template](https://www.scalenut.com/templates/free-keyword-research-template): Provides a keyword research template
+- [Free Onpage SEO Template](https://www.scalenut.com/templates/free-onpage-seo-template): Provides a free Onpage SEO template to use
+- [Free Pillar Page Checklist Template](https://www.scalenut.com/templates/free-pillar-page-checklist-template): Provides a free pillar page checklist template
+- [Free Pillar Page Template](https://www.scalenut.com/templates/free-pillar-page-template): Template for creating a pillar page.
+- [Free SEO Audit Template](https://www.scalenut.com/templates/free-seo-audit-template): A template on how to conduct a SEO audit.
+- [Free SEO Marketing Plan Template](https://www.scalenut.com/templates/free-seo-marketing-plan-template): Provides a free SEO marketing plan template to use
+- [Free SEO Report Template](https://www.scalenut.com/templates/free-seo-report-template): Template for SEO reports.
+
+## About & Contact
+
+- [About](https://www.scalenut.com/about): Information about Scalenut, its mission, and team.
+- [Careers](https://www.scalenut.com/careers): Scalenut's career page, listing job openings.
+- [Contact Us](https://www.scalenut.com/contact-us): Contact information and form for reaching Scalenut.
+- [Customer Success](https://www.scalenut.com/customer-success): Information about Scalenut's customer success program.
+- [Team](https://www.scalenut.com/team): Information about the Scalenut team.
+- [Write For Us](https://www.scalenut.com/write-for-us): Guidelines for guest blogging on Scalenut's blog.
+
+## Affiliate Program
+
+- [Affiliate](https://www.scalenut.com/affiliate): Information about Scalenut's affiliate program.
+- [Affiliate LP](https://www.scalenut.com/affiliate-lp): Landing page for the affiliate program.
+- [Affiliate Terms and Condition](https://www.scalenut.com/affiliate-terms-and-condition): Legal T&C related to the affiliate program
+
+## Newsletters & Updates
+
+- [Newsletters](https://www.scalenut.com/newsletters): General page for newsletters.
+- [Newsletter 11](https://www.scalenut.com/newsletters/newsletter-11): Specific newsletter issue 11.
+- [Newsletter 2](https://www.scalenut.com/newsletters/newsletter-2): Specific newsletter issue 2.
+- [Newsletter 3](https://www.scalenut.com/newsletters/newsletter-3): Specific newsletter issue 3.
+- [Newsletter 4](https://www.scalenut.com/newsletters/newsletter-4): Specific newsletter issue 4.
+- [Newsletter 5](https://www.scalenut.com/newsletters/newsletter-5): Specific newsletter issue 5.
+- [Newsletter 6](https://www.scalenut.com/newsletters/newsletter-6): Specific newsletter issue 6.
+- [Newsletter 7](https://www.scalenut.com/newsletters/newsletter-7): Specific newsletter issue 7.
+- [Newsletter 8](https://www.scalenut.com/newsletters/newsletter-8): Specific newsletter issue 8.
+- [Newsletter 9](https://www.scalenut.com/newsletters/newsletter-9): Specific newsletter issue 9.
+- [Weekly Newsletter 1](https://www.scalenut.com/newsletters/weekly-newsletter-1): Specific weekly newsletter issue 1.
+- [Mega Launch-2](https://www.scalenut.com/mega-launch-2): Page about an event launch.
+- [Mega Launch Contest](https://www.scalenut.com/mega-launch-contest): Page regaring the contest
+
+# End of LLMs.txt</pre>
+      </div>
+    </div>
+    
+    <div class="action-btns">
+      <a href="/" class="action-btn">Generate Your Own LLMs.txt</a>
+      <a href="/samples/" class="action-btn secondary-btn">View More Samples</a>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2025 LLMs.txt. This sample is for educational purposes only and is not affiliated with Scalenut.</p>
+    </div>
+  </footer>
+</body>
+</html> 

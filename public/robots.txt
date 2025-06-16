@@ -1,0 +1,16 @@
+# robots.txt for https://txtllms.com
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://txtllms.com/sitemap.xml
+
+# LLMs.txt location - AI control guidance
+LLMs: https://txtllms.com/llms.txt
+
+# Disallow API endpoints
+Disallow: /api/
+
+# Allow all bots to access JavaScript and CSS
+Allow: /*.js$
+Allow: /*.css$ 
