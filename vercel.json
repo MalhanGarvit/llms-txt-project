@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/_vercel/insights/script.js",
+      "dest": "/_vercel/insights/script.js"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/public/images/$1"
+    },
+    {
+      "src": "/blog/(.*)",
+      "dest": "/public/blog/$1"
+    },
+    {
+      "src": "/samples/(.*)",
+      "dest": "/public/samples/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ]
+} 
