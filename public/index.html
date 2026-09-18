@@ -1869,6 +1869,16 @@
     font-family:var(--heading-font,inherit);font-size:1.05rem;font-weight:600;
     color:var(--text);margin:0 0 .6rem;
   }
+
+  /* ===== "NOT A LOGIN" NOTE ===== */
+  .no-login-note{
+    text-align:center;font-size:.88rem;line-height:1.6;color:var(--text-secondary);
+    max-width:46rem;margin:0 auto 1.75rem;opacity:.9;
+    position:relative;z-index:11;pointer-events:auto !important;
+  }
+  .no-login-note a{color:var(--primary);text-decoration:underline;pointer-events:auto !important}
+  .no-login-note a:hover{color:var(--primary-hover,#5A52E0)}
+  .label-hint{font-weight:400;color:var(--text-secondary);opacity:.75}
 </style>
 </head>
 <body>
@@ -2056,10 +2066,15 @@
   <div class="container">
     <div class="card">
       <p style="text-align: center;">Create an LLMs.txt file to boost SEO, and secure higher rankings in AI search models like Chatgpt, Google Gemini and Claude.</p>
+      <p class="no-login-note">
+        This is not a sign-up. There is no account, no password and nothing to log in to —
+        we email the finished file to the address you enter.
+        <a href="/about">Read how it works</a> without entering anything.
+      </p>
     
       <form id="llmForm">
         <div class="form-group">
-          <label for="email" class="form-label">Email address</label>
+          <label for="email" class="form-label">Email address <span class="label-hint">— where we send your file</span></label>
           <input type="email" id="email" class="form-control" required placeholder="your@email.com">
           <div class="input-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2348,12 +2363,12 @@
           <circle cx="4" cy="4" r="2"></circle>
         </svg>
       </a>
-      <a href="mailto:llmstxt@gmail.com" class="social-link" aria-label="Email llmstxt@gmail.com">
+      <!--email_off--><a href="mailto:llmstxt@gmail.com" class="social-link" aria-label="Email llmstxt@gmail.com">
         <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="4" width="20" height="16" rx="2"></rect>
           <path d="m22 7-10 6L2 7"></path>
         </svg>
-      </a>
+      </a><!--email_on-->
     </div>
   
     <nav class="footer-links" aria-label="Footer">
@@ -2362,7 +2377,7 @@
       <a href="/blog/">Blog</a>
       <a href="/privacy">Privacy Policy</a>
       <a href="/terms">Terms of Service</a>
-      <a href="mailto:llmstxt@gmail.com">llmstxt@gmail.com</a>
+      <!--email_off--><a href="mailto:llmstxt@gmail.com">llmstxt@gmail.com</a><!--email_on-->
       <button type="button" onclick="txtllmsCookieSettings()">Cookie settings</button>
     </nav>
 
