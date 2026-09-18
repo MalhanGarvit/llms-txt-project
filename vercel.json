@@ -56,6 +56,14 @@
       "dest": "/public/sitemap.xml"
     },
     {
+      "src": "/favicon.ico",
+      "dest": "/public/favicon.ico"
+    },
+    {
+      "src": "/site.webmanifest",
+      "dest": "/public/site.webmanifest"
+    },
+    {
       "src": "/(.*)",
       "dest": "/server.js"
     }
