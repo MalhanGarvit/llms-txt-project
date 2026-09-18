@@ -89,7 +89,7 @@
  <style>
   /* ===== VARIABLES ===== */
   :root {
-    /* Colors - Using Codeb.html color palette */
+    /* Colors */
     --primary: #6C63FF;
     --primary-hover: #5A52E0;
     --accent: #FF6B6B;
@@ -118,11 +118,9 @@
 
   /* Top Right Nudge */
   .top-right-nudge {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
+    position: static;
     z-index: 100;
-    pointer-events: auto;
+    pointer-events: auto !important;
   }
 
   .samples-nudge {
@@ -580,19 +578,8 @@
   }
    .testimonial-text {
     position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     font-size: 0.95rem;
-  }
-   .testimonial-text::before {
-    content: '"';
-    position: absolute;
-    left: 0;
-    top: -0.5rem;
-    font-size: 2.5rem;
-    color: var(--primary);
-    opacity: 0.5;
-    line-height: 1;
   }
    .testimonial-author {
     display: flex;
@@ -1833,7 +1820,8 @@
   }
   .site-brand{display:inline-block;line-height:0;pointer-events:auto !important}
   .site-brand img{display:block;width:210px;height:auto}
-  .site-nav{display:flex;gap:1.75rem;align-items:center}
+  .site-nav{display:flex;gap:1.75rem;align-items:center;margin-left:auto}
+  .site-header .top-right-nudge{margin-left:1.25rem}
   .site-nav a{
     color:var(--text-secondary);font-size:.92rem;font-weight:500;text-decoration:none;
     transition:color .2s ease;pointer-events:auto !important;
@@ -1860,6 +1848,27 @@
     transition:color .2s ease;
   }
   .footer-links a:hover,.footer-links button:hover{color:var(--text)}
+
+  /* ===== SAMPLE CHIPS (replaces borrowed trust badges) ===== */
+  .sample-chips{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:.7rem;margin:0 auto 1rem;
+    max-width:760px;position:relative;z-index:11;pointer-events:auto !important;
+  }
+  .sample-chips a{
+    display:inline-block;padding:.5rem 1.1rem;border-radius:999px;
+    border:1px solid var(--border,rgba(255,255,255,.12));
+    background:rgba(255,255,255,.04);color:var(--text-secondary);
+    font-size:.9rem;font-weight:500;text-decoration:none;
+    transition:all .2s ease;pointer-events:auto !important;
+  }
+  .sample-chips a:hover{color:var(--text);border-color:var(--primary);background:rgba(108,99,255,.12)}
+  .trusted-note{
+    text-align:center;font-size:.8rem;color:var(--text-secondary);opacity:.65;margin:0 auto 1rem;
+  }
+  .value-title{
+    font-family:var(--heading-font,inherit);font-size:1.05rem;font-weight:600;
+    color:var(--text);margin:0 0 .6rem;
+  }
 </style>
 </head>
 <body>
@@ -1873,13 +1882,7 @@
     <a href="/samples/">Samples</a>
     <a href="/blog/">Blog</a>
   </nav>
-</header>
-
-<!-- Cursor Glow Effect -->
-<div class="cursor-glow"></div>
-
-<!-- Top Right Nudge -->
-<div class="top-right-nudge">
+  <div class="top-right-nudge">
   <a href="/samples/" class="samples-nudge">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -1891,6 +1894,12 @@
     View Generated llms.txt Files
   </a>
 </div>
+</header>
+
+<!-- Cursor Glow Effect -->
+<div class="cursor-glow"></div>
+
+
 
 <!-- Galaxy Background -->
 <div class="galaxy-background">
@@ -2011,28 +2020,28 @@
     <div class="hero-content">
       <h1 class="main-header">Optimize for GEO</h1>
       <h2 class="sub-header">Get your brand presence on AI Engines like ChatGPT</h2>
-      <p class="subtitle">Industry-first and most trusted LLMs.txt generator—No Signup Required.</p>
+      <p class="subtitle">Free llms.txt generator. Reads your sitemap, drafts the file, and emails it in about a minute. No signup.</p>
   
       <div class="badges">
         <div class="badge badge-producthunt">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm1-13h-4v10h2v-4h2c2.206 0 4-1.794 4-4s-1.794-4-4-4zm0 6h-2V9h2c1.103 0 2 .897 2 2s-.897 2-2 2z"/>
           </svg>
-          <span>Featured on Product Hunt</span>
+          <span>Free — no signup</span>
         </div>
         <div class="badge badge-new">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"></path>
             <circle cx="17" cy="7" r="5"></circle>
           </svg>
-          <span>New Standard</span>
+          <span>Follows the llms.txt spec</span>
         </div>
         <div class="badge badge-trusted">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
             <path d="m9 12 2 2 4-4"></path>
           </svg>
-          <span>Trusted by 500+ websites</span>
+          <span>Up to 250 pages per site</span>
         </div>
       </div>
     </div>
@@ -2199,13 +2208,16 @@
       </div>
     </div>
     
-    <p class="trusted-title">Trusted by companies worldwide</p>
-    <div class="trusted-logos">
-      <img src="https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_1233ef954d868794f19ce75837789fe8/g2.png" alt="G2" class="trusted-logo" loading="lazy">
-      <img src="https://companieslogo.com/img/orig/capterra-e427a181.png?t=1720244494" alt="Capterra" class="trusted-logo" loading="lazy">
-      <img src="https://cdn.worldvectorlogo.com/logos/trustpilot-2.svg" alt="Trustpilot" class="trusted-logo" loading="lazy">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png" alt="Google" class="trusted-logo" loading="lazy">
+    <p class="trusted-title">Example files this tool has generated</p>
+    <div class="sample-chips">
+      <a href="/samples/semrush-llmstxt.html" class="sample-chip">Semrush</a>
+      <a href="/samples/ahrefs-llmstxt.html" class="sample-chip">Ahrefs</a>
+      <a href="/samples/yoastseo-llmstxt.html" class="sample-chip">Yoast SEO</a>
+      <a href="/samples/scalenut-llmstxt.html" class="sample-chip">Scalenut</a>
+      <a href="/samples/neilpatel-llmstxt.html" class="sample-chip">Neil Patel</a>
+      <a href="/samples/surferseo-llmstxt.html" class="sample-chip">Surfer SEO</a>
     </div>
+    <p class="trusted-note">Public examples produced by this generator. We are not affiliated with these companies.</p>
   </div>
 </section>
 
@@ -2251,47 +2263,33 @@
 <!-- Testimonials Section -->
 <section class="testimonials" id="testimonials">
   <div class="container">
-    <h2>What People Are Saying</h2>
-    <p class="subtitle">Hear from content creators and developers who are using LLMs.txt</p>
-  
+    <h2>What you actually get</h2>
+    <p class="subtitle">No account, no upsell, no lock-in. Here is the whole product.</p>
+
     <div class="testimonials-grid">
       <div class="testimonial-card">
-        <p class="testimonial-text">"LLMs.txt has been a game-changer for our content strategy. We now have complete control over how AI interacts with our website."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" loading="lazy">
-          </div>
-          <div>
-            <p class="testimonial-name">Sarah Johnson</p>
-            <p class="testimonial-title">Content Director, TechCorp</p>
-          </div>
-        </div>
+        <h3 class="value-title">A map of your site, not a blocklist</h3>
+        <p class="testimonial-text">
+          <code>robots.txt</code> only says yes or no to a path. Your <code>llms.txt</code>
+          describes what the site is and which pages actually explain it — read from your own
+          sitemap, up to 250 URLs.
+        </p>
       </div>
-    
       <div class="testimonial-card">
-        <p class="testimonial-text">"Setting up LLMs.txt was incredibly easy. The generator tool saved us hours of research and implementation time."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" loading="lazy">
-          </div>
-          <div>
-            <p class="testimonial-name">Michael Chen</p>
-            <p class="testimonial-title">Web Developer, Innovate Inc</p>
-          </div>
-        </div>
+        <h3 class="value-title">A file you publish yourself</h3>
+        <p class="testimonial-text">
+          It arrives as a <code>.txt</code> attachment in your inbox. Drop it at
+          <code>yourdomain.com/llms.txt</code>. Nothing to install, no script on your site,
+          no dependency on us.
+        </p>
       </div>
-    
       <div class="testimonial-card">
-        <p class="testimonial-text">"As a content creator, I was concerned about AI using my work. LLMs.txt gives me peace of mind and control over my intellectual property."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">
-            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elena Rodriguez" loading="lazy">
-          </div>
-          <div>
-            <p class="testimonial-name">Elena Rodriguez</p>
-            <p class="testimonial-title">Independent Publisher</p>
-          </div>
-        </div>
+        <h3 class="value-title">Yours to edit — and free</h3>
+        <p class="testimonial-text">
+          The draft is a starting point; you know which pages matter. Edit it freely, including
+          commercially. We claim no rights over it and there is no paid tier.
+          <a href="/about">How it works &rarr;</a>
+        </p>
       </div>
     </div>
   </div>
