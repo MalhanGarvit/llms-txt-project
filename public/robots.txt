@@ -1,12 +1,12 @@
-# robots.txt for https://txtllms.com
+# robots.txt for https://www.txtllms.com
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://txtllms.com/sitemap.xml
+Sitemap: https://www.txtllms.com/sitemap.xml
 
 # LLMs.txt location - AI control guidance
-LLMs: https://txtllms.com/llms.txt
+LLMs: https://www.txtllms.com/llms.txt
 
 # Disallow API endpoints
 Disallow: /api/
