@@ -22,14 +22,19 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from the public directory
 app.use(express.static('public'));
 
-// Set up Nodemailer transporter using Gmail SMTP
+// Set up Nodemailer transporter using Gmail SMTP.
+// EMAIL_PASS has no fallback on purpose: a literal app password here would be
+// published to anyone who can read this repository.
+if (!process.env.EMAIL_PASS) {
+  console.error("ERROR: EMAIL_PASS environment variable is not set. Generated files cannot be emailed until it is.");
+}
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST || 'smtp.gmail.com',
   port: Number(process.env.EMAIL_PORT || 465),
   secure: process.env.EMAIL_SECURE === 'true', // true for 465
   auth: {
     user: process.env.EMAIL_USER || "llmstxt@gmail.com",
-    pass: process.env.EMAIL_PASS || "eeng nhqv dyit ddhz"
+    pass: process.env.EMAIL_PASS
   }
 });
 
