@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="txtllms mark">
+  <!-- document body with folded corner -->
+  <path d="M24 12h34l20 20v48a10 10 0 0 1-10 10H24a10 10 0 0 1-10-10V22a10 10 0 0 1 10-10z"
+        fill="none" stroke="#6C63FF" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M58 12v20h20" fill="none" stroke="#6C63FF" stroke-width="7"
+        stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- content lines -->
+  <g stroke-linecap="round" stroke-width="7">
+    <path d="M30 46h28" stroke="#1B1D33"/>
+    <path d="M30 60h24" stroke="#3A3D57"/>
+    <path d="M30 74h14" stroke="#8A8DA6"/>
+  </g>
+  <!-- signal: broadcasting out of the page edge -->
+  <path d="M64 58a20 20 0 0 1 14 18" fill="none" stroke="#6C63FF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M64 70a8 8 0 0 1 6 6" fill="none" stroke="#6C63FF" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="61" cy="79" r="5" fill="#16C8C8"/>
+</svg>

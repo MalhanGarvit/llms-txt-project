@@ -4,6 +4,10 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -24,8 +28,36 @@
       "dest": "/public/samples/$1"
     },
     {
+      "src": "/js/(.*)",
+      "dest": "/public/js/$1"
+    },
+    {
+      "src": "/about",
+      "dest": "/public/about.html"
+    },
+    {
+      "src": "/privacy",
+      "dest": "/public/privacy.html"
+    },
+    {
+      "src": "/terms",
+      "dest": "/public/terms.html"
+    },
+    {
+      "src": "/llms.txt",
+      "dest": "/public/llms.txt"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/public/robots.txt"
+    },
+    {
+      "src": "/sitemap.xml",
+      "dest": "/public/sitemap.xml"
+    },
+    {
       "src": "/(.*)",
       "dest": "/server.js"
     }
   ]
-} 
+}

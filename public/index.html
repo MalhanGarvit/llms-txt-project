@@ -6,32 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LLMs.txt Generator | Control AI Access to Your Content</title>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XZVZG1427H"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XZVZG1427H');
-</script>
-
-<!-- Vercel Analytics -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-
-<!-- Mixpanel -->
-<script type="text/javascript">
-(function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
-for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
-
-// Replace 'YOUR_ACTUAL_TOKEN' with your Mixpanel project token
-// Sign up at mixpanel.com to get your token
-mixpanel.init("16f9900d03a958ca11da118565aed556", {debug: true}); 
-mixpanel.track("Page View");
-</script>
+<!-- Analytics: GA4, Vercel Analytics and Mixpanel are loaded by /js/consent.js
+     only after the visitor accepts analytics cookies. Do not add trackers here. -->
+<script src="/js/consent.js" defer></script>
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
@@ -74,19 +51,38 @@ mixpanel.track("Page View");
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "LLMs.txt Generator",
-  "description": "Free LLMs.txt generator—no login required. Best for LLM SEO/GEO. Make your website AI crawling friendly with the most accurate and correct product in the market.",
+  "description": "Free LLMs.txt generator\u2014no login required. Best for LLM SEO/GEO. Make your website AI crawling friendly with the most accurate and correct product in the market.",
   "url": "https://txtllms.com",
   "applicationCategory": "WebTool",
   "operatingSystem": "All",
   "offers": {
     "@type": "Offer",
     "price": "0",
-    "priceCurrency": "USD"
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
   },
   "creator": {
     "@type": "Person",
-    "name": "Garvit Malhan"
-  }
+    "name": "Garvit Malhan",
+    "url": "https://www.linkedin.com/in/garvitmalhan/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "txtllms",
+    "url": "https://txtllms.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://txtllms.com/images/logo.svg"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "llmstxt@gmail.com",
+      "availableLanguage": "English"
+    }
+  },
+  "image": "https://txtllms.com/images/og-image.jpg",
+  "isAccessibleForFree": true
 }
 </script>
 
@@ -1829,9 +1825,53 @@ mixpanel.track("Page View");
       gap: 0.5rem;
     }
   }
+
+  /* ===== SITE HEADER ===== */
+  .site-header{
+    position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;
+    gap:1.5rem;flex-wrap:wrap;max-width:1200px;margin:0 auto;padding:1.25rem 1.5rem 0;
+  }
+  .site-brand{display:inline-block;line-height:0}
+  .site-brand img{display:block;width:210px;height:auto}
+  .site-nav{display:flex;gap:1.75rem;align-items:center}
+  .site-nav a{
+    color:var(--text-secondary);font-size:.92rem;font-weight:500;text-decoration:none;
+    transition:color .2s ease;
+  }
+  .site-nav a:hover{color:var(--text)}
+  @media (max-width:640px){
+    .site-header{padding:1rem 1rem 0;gap:.75rem}
+    .site-brand img{width:168px}
+    .site-nav{gap:1.1rem}
+    .site-nav a{font-size:.85rem}
+  }
+
+  /* ===== FOOTER LEGAL LINKS ===== */
+  .footer-links{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem 1.5rem;
+    margin-bottom:1.25rem;position:relative;z-index:11;
+  }
+  .footer-links a,.footer-links button{
+    color:var(--text-secondary);font-size:.88rem;text-decoration:none;
+    background:none;border:0;padding:0;font-family:inherit;cursor:pointer;
+    transition:color .2s ease;
+  }
+  .footer-links a:hover,.footer-links button:hover{color:var(--text)}
 </style>
 </head>
 <body>
+<!-- Site Header -->
+<header class="site-header">
+  <a class="site-brand" href="/" aria-label="txtllms home">
+    <img src="/images/logo.svg" alt="txtllms — AI search, control, visibility" width="210" height="55">
+  </a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/about">About</a>
+    <a href="/samples/">Samples</a>
+    <a href="/blog/">Blog</a>
+  </nav>
+</header>
+
 <!-- Cursor Glow Effect -->
 <div class="cursor-glow"></div>
 
@@ -2300,33 +2340,32 @@ mixpanel.track("Page View");
 <footer class="footer">
   <div class="container">
     <div class="social-links">
-      <a href="https://www.linkedin.com/in/garvitmalhan/" target="_blank" class="social-link">
+      <a href="https://www.linkedin.com/in/garvitmalhan/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
         <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
           <rect x="2" y="9" width="4" height="12"></rect>
           <circle cx="4" cy="4" r="2"></circle>
         </svg>
       </a>
-      <a href="https://www.linkedin.com/in/garvitmalhan/" target="_blank" class="social-link">
-        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-        </svg>
-      </a>
-      <a href="https://www.linkedin.com/in/garvitmalhan/" target="_blank" class="social-link">
-        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-        </svg>
-      </a>
-      <a href="https://www.linkedin.com/in/garvitmalhan/" target="_blank" class="social-link">
-        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237.5.857.645 1.371.645 1.371.645 1.104-.038.807-.038.807-.645 1.371-1.333.63-1.333.63-.19 0-.583-.488-.583-.488 1.817.103 2.324 1.871 2.324 1.871 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823.823 1.224 1.102 1.224 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+      <a href="mailto:llmstxt@gmail.com" class="social-link" aria-label="Email llmstxt@gmail.com">
+        <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          <path d="m22 7-10 6L2 7"></path>
         </svg>
       </a>
     </div>
   
-    <p class="copyright">Created by Garvit Malhan • © 2025</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="/about">About</a>
+      <a href="/samples/">Samples</a>
+      <a href="/blog/">Blog</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:llmstxt@gmail.com">llmstxt@gmail.com</a>
+      <button type="button" onclick="txtllmsCookieSettings()">Cookie settings</button>
+    </nav>
+
+    <p class="copyright">txtllms.com — operated by Garvit Malhan, India • © 2026</p>
   </div>
 </footer>
 

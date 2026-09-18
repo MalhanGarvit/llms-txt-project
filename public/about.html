@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About txtllms — What this llms.txt generator is for</title>
+<meta name="description" content="Why txtllms.com exists, what an llms.txt file does and does not do, how the generator works, and who runs it.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.txtllms.com/about">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="txtllms">
+<meta property="og:title" content="About txtllms — What this llms.txt generator is for">
+<meta property="og:description" content="Why txtllms.com exists, what an llms.txt file does and does not do, how the generator works, and who runs it.">
+<meta property="og:url" content="https://www.txtllms.com/about">
+<meta property="og:image" content="https://txtllms.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --background:#0A0B1E;
+    --surface:rgba(30,32,50,.95);
+    --text:#F5F7FF;
+    --text-secondary:#B4B7C5;
+    --primary:#6C63FF;
+    --primary-hover:#5A52E0;
+    --accent:#FF6B6B;
+    --border:rgba(255,255,255,.1);
+    --heading-font:'Space Grotesk',sans-serif;
+    --body-font:'Inter',sans-serif;
+    --shadow-md:0 4px 16px rgba(0,0,0,.3);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--background);color:var(--text);
+    font-family:var(--body-font);font-size:17px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px;margin:0 auto;padding:64px 16px 96px}
+  header.doc{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:8px}
+  .eyebrow{font-family:var(--heading-font);font-size:.78rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--primary);margin:0 0 10px}
+  h1{font-family:var(--heading-font);font-size:clamp(2rem,5vw,2.75rem);line-height:1.15;margin:0 0 14px;font-weight:700}
+  .dates{color:var(--text-secondary);font-size:.92rem;margin:0}
+  h2{font-family:var(--heading-font);font-size:1.3rem;font-weight:600;
+    margin:48px 0 14px;padding-top:8px;scroll-margin-top:24px}
+  h3{font-family:var(--heading-font);font-size:1.03rem;font-weight:600;margin:28px 0 8px}
+  p,li{color:var(--text-secondary)}
+  p{margin:0 0 16px}
+  ul,ol.body{margin:0 0 16px;padding-left:22px}
+  li{margin-bottom:9px}
+  strong{color:var(--text);font-weight:600}
+  a{color:var(--primary);text-decoration:none;border-bottom:1px solid rgba(108,99,255,.35)}
+  a:hover,a:focus-visible{color:var(--primary-hover);border-bottom-color:var(--primary-hover)}
+  a:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:2px}
+  .toc{background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:20px 24px;margin:32px 0 8px;box-shadow:var(--shadow-md)}
+  .toc p{margin:0 0 10px;color:var(--text);font-family:var(--heading-font);font-weight:600;font-size:.95rem}
+  .toc ol{margin:0;padding-left:20px;columns:2;column-gap:28px}
+  .toc li{margin-bottom:6px;font-size:.93rem;break-inside:avoid}
+  table{width:100%;border-collapse:collapse;margin:0 0 20px;font-size:.93rem;display:block;overflow-x:auto}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{font-family:var(--heading-font);color:var(--text);font-weight:600;white-space:nowrap}
+  td{color:var(--text-secondary)}
+  .callout{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);
+    border-radius:10px;padding:16px 20px;margin:0 0 20px}
+  .callout p:last-child{margin-bottom:0}
+  footer.doc{margin-top:64px;padding-top:24px;border-top:1px solid var(--border);
+    color:var(--text-secondary);font-size:.9rem}
+  .brand{display:inline-block;border:0;margin:0 0 34px}
+  .brand img{display:block;width:230px;height:auto}
+  .sitefoot{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.9rem}
+  .sitefoot a{border-bottom:0}
+  .linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--primary);cursor:pointer;text-decoration:none}
+  .linkbtn:hover{color:var(--primary-hover)}
+  @media (max-width:640px){.wrap{padding:40px 16px 72px}.toc ol{columns:1}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<script src="/js/consent.js" defer></script>
+</head>
+<body>
+<main class="wrap">
+
+<a class="brand" href="/" aria-label="txtllms home">
+  <img src="/images/logo.svg" alt="txtllms — AI search, control, visibility" width="230" height="61">
+</a>
+
+<header class="doc">
+  <p class="eyebrow">About</p>
+  <h1>Why txtllms exists</h1>
+  <p class="dates">What this tool is for, who built it, and how it works.</p>
+</header>
+
+<nav class="toc" aria-label="Contents">
+  <p>On this page</p>
+  <ol>
+    <li><a href="#problem">The problem</a></li>
+    <li><a href="#purpose">What this tool does</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#honest">What it cannot do</a></li>
+    <li><a href="#who">Who is behind it</a></li>
+    <li><a href="#cost">What it costs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</nav>
+
+<h2 id="problem">1. The problem</h2>
+<p>
+  People increasingly get answers from ChatGPT, Perplexity, Google's AI Overviews and Claude rather
+  than from a page of blue links. When one of those systems summarises your industry, it decides on
+  its own which pages of your site matter, what they say, and whether you get named at all.
+</p>
+<p>
+  Websites already have a file for telling crawlers what to do: <code>robots.txt</code>. But
+  <code>robots.txt</code> only says <em>yes</em> or <em>no</em> to a path. It has no way to say
+  "here is what this site is, here are the pages that actually explain it, read these first." That
+  gap is what <a href="https://llmstxt.org/" rel="noopener noreferrer" target="_blank">llms.txt</a>,
+  an open specification, was proposed to fill.
+</p>
+
+<h2 id="purpose">2. What this tool does</h2>
+<p>
+  <strong>txtllms.com generates a first draft of an <code>llms.txt</code> file for your website.</strong>
+  You give it a domain; it returns a structured, human-readable map of that site - a short
+  description, the sections that matter, and the URLs worth reading - in the format the
+  specification describes. You then review it, edit anything you disagree with, and publish it at
+  <code>yourdomain.com/llms.txt</code>.
+</p>
+<p>
+  The point is to save the boring part. Writing one of these by hand for a site with a few hundred
+  pages means opening the sitemap, deciding what matters, and formatting the result. That is maybe
+  an afternoon. This does the first pass in about a minute so you can spend your time on the
+  judgement calls instead.
+</p>
+<div class="callout">
+  <p>
+    <strong>This is a starting point, not a finished file.</strong> The draft is generated
+    automatically from what your sitemap exposes. Read it before you publish it - you know which of
+    your pages matter and the generator does not.
+  </p>
+</div>
+
+<h2 id="how">3. How it works</h2>
+<ol class="body">
+  <li>
+    <strong>You submit a domain and an email address.</strong> The email is where the finished file
+    is sent - there is no account to create and no password to set.
+  </li>
+  <li>
+    <strong>We read your public sitemap.</strong> The tool fetches your <code>robots.txt</code>,
+    follows the sitemap references it finds there (or checks the usual locations if there are none),
+    and collects up to 250 page URLs. It reads nothing behind a login and nothing your own
+    <code>robots.txt</code> excludes.
+  </li>
+  <li>
+    <strong>That URL list is turned into a draft.</strong> The list is passed to Google's Gemini API,
+    which groups the pages and writes the file in <code>llms.txt</code> format.
+  </li>
+  <li>
+    <strong>The file arrives in your inbox</strong> as a <code>.txt</code> attachment, ready to
+    review and upload to your site's root directory.
+  </li>
+</ol>
+<p>
+  Exactly what data is involved at each step, and who processes it, is set out in the
+  <a href="/privacy">Privacy Policy</a>.
+</p>
+
+<h2 id="honest">4. What it cannot do</h2>
+<p>
+  It is worth being blunt about the limits, because plenty of tools in this space are not.
+</p>
+<ul>
+  <li>
+    <strong>An <code>llms.txt</code> file does not control AI crawlers.</strong> It is a published
+    convention, not an enforcement mechanism. Whether any AI system reads it, respects it or ignores
+    it is entirely that system's decision. If you need to block a crawler, that is a
+    <code>robots.txt</code> or server-level job.
+  </li>
+  <li>
+    <strong>Publishing one guarantees no ranking, traffic or citation outcome.</strong> Anyone
+    promising you a number here is guessing.
+  </li>
+  <li>
+    <strong>It is only as good as your sitemap.</strong> If your sitemap is missing, stale or
+    excludes your best pages, the draft will reflect that.
+  </li>
+</ul>
+<p>
+  What it does do is make your site's structure and purpose legible in one place, in a format that
+  is cheap for a model to read. That is a reasonable bet, not a guarantee.
+</p>
+
+<h2 id="who">5. Who is behind it</h2>
+<p>
+  txtllms.com is built and run by <strong>Garvit Malhan</strong>, an individual trading as
+  txtllms.com, based in India. It is an independent project.
+</p>
+<p>
+  We are not affiliated with, endorsed by, or acting on behalf of the authors of the
+  <code>llms.txt</code> specification, OpenAI, Google, Anthropic, Perplexity, or any third-party
+  directory of <code>llms.txt</code> files. Where the site links to those, the links are references,
+  not endorsements.
+</p>
+
+<h2 id="cost">6. What it costs</h2>
+<p>
+  <strong>Nothing.</strong> The generator is free to use, there is no paid tier, no trial, and no
+  card is collected anywhere on this site. We ask for an email address because that is how the file
+  is delivered.
+</p>
+<p>
+  Submitting the generator form does not subscribe you to anything. The newsletter is a separate,
+  optional sign-up with an unsubscribe link in every message. We also offer an optional free
+  consultation call; it is general information, not professional advice, and nothing is sold on it.
+</p>
+
+<h2 id="contact">7. Contact</h2>
+<p>
+  A real person reads this mailbox. Questions, bug reports, corrections, data requests and takedown
+  requests all go to the same place:
+</p>
+<ul>
+  <li><strong>Email:</strong> <a href="mailto:llmstxt@gmail.com">llmstxt@gmail.com</a></li>
+  <li><strong>Operator:</strong> Garvit Malhan, trading as txtllms.com, India</li>
+  <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/garvitmalhan/" rel="noopener noreferrer" target="_blank">linkedin.com/in/garvitmalhan</a></li>
+</ul>
+<p>
+  We aim to reply within two business days. Your use of the site is governed by the
+  <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.
+</p>
+
+<footer class="doc">
+  <div class="sitefoot">
+    <a href="/">&larr; LLMs.txt Generator</a>
+    <a href="/about">About</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="mailto:llmstxt@gmail.com">llmstxt@gmail.com</a>
+    <button type="button" class="linkbtn" onclick="txtllmsCookieSettings()">Cookie settings</button>
+  </div>
+  <p style="margin-top:14px">&copy; 2026 Garvit Malhan, trading as txtllms.com.</p>
+</footer>
+
+</main>
+</body>
+</html>

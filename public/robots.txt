@@ -13,4 +13,5 @@ Disallow: /api/
 
 # Allow all bots to access JavaScript and CSS
 Allow: /*.js$
-Allow: /*.css$ 
+Allow: /*.css$
+Allow: /js/ 
