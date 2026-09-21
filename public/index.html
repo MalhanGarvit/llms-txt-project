@@ -1507,11 +1507,10 @@
    .sub-header {
     font-size: clamp(1.4rem, 3vw, 2rem);
     color: var(--text);
-    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem;
+    max-width: 900px;
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    text-wrap: balance;
   }
    .subtitle {
     font-size: clamp(1rem, 2vw, 1.25rem);
@@ -1879,6 +1878,16 @@
   .no-login-note a{color:var(--primary);text-decoration:underline;pointer-events:auto !important}
   .no-login-note a:hover{color:var(--primary-hover,#5A52E0)}
   .label-hint{font-weight:400;color:var(--text-secondary);opacity:.75}
+
+  /* ===== HERO EYEBROW ===== */
+  .hero-eyebrow{
+    text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;font-weight:600;
+    color:var(--primary);margin:0 0 .75rem;opacity:.95;
+  }
+  .sub-header code,.subtitle code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;
+    background:rgba(255,255,255,.06);padding:.1em .35em;border-radius:4px;
+  }
 </style>
 </head>
 <body>
@@ -2028,9 +2037,10 @@
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <h1 class="main-header">Optimize for GEO</h1>
-      <h2 class="sub-header">Get your brand presence on AI Engines like ChatGPT</h2>
-      <p class="subtitle">Free llms.txt generator. Reads your sitemap, drafts the file, and emails it in about a minute. No signup.</p>
+      <p class="hero-eyebrow">Optimize for GEO</p>
+      <h1 class="main-header">Free LLMs.txt Generator</h1>
+      <h2 class="sub-header">Tell ChatGPT, Claude, Perplexity and Google what your site is about &mdash; in about a minute.</h2>
+      <p class="subtitle">Reads your sitemap, drafts your <code>llms.txt</code>, and emails you the file. No account, no password, nothing to log in to.</p>
   
       <div class="badges">
         <div class="badge badge-producthunt">
