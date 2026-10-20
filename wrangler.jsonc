@@ -10,6 +10,14 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none"
   },
+  // Cloudflare Email Sending. Needs the zone enabled for mail.txtllms.com first;
+  // see DEPLOY-CLOUDFLARE.md.
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_sender_addresses": ["files@mail.txtllms.com"]
+    }
+  ],
   "observability": {
     "enabled": true
   }

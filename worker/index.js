@@ -2,9 +2,10 @@
  * Cloudflare Worker port of server.js
  *
  * Differences forced by the runtime, all deliberate:
- *   - No SMTP. Workers cannot talk to Gmail on port 465, so mail goes out over
- *     Resend's HTTP API instead. The From address must be on a domain we have
- *     verified, which a gmail.com address can never be.
+ *   - No SMTP. Workers cannot talk to Gmail on port 465, so mail goes out
+ *     through Cloudflare Email Sending (the EMAIL binding), or Resend's HTTP API
+ *     if that binding is absent. Either way the From address must be on a
+ *     domain we have verified, which a gmail.com address can never be.
  *   - No express/axios/xml2js. Static files are served by the ASSETS binding,
  *     requests use fetch, and sitemaps are read with a <loc> scan rather than a
  *     full XML parse.
@@ -222,17 +223,50 @@ function toBase64(str) {
   return btoa(bin);
 }
 
-async function sendMail(env, { to, subject, text, html, attachments }) {
-  if (!env.RESEND_API_KEY) throw new Error('RESEND_API_KEY is not set');
+// mail.txtllms.com, not the apex: the apex carries a GoDaddy SPF record ending
+// in -all, and a second sender there would either need that record rewritten or
+// fail it outright. A subdomain gets its own SPF and DKIM and touches nothing.
+const SENDER = { name: 'txtllms', email: 'files@mail.txtllms.com' };
+const REPLY_TO = 'llmstxt@gmail.com';
+
+// attachments: [{ filename, type, content }] with content as a plain string.
+// Each transport encodes it the way it wants.
+async function sendMail(env, { to, subject, text, html, attachments = [] }) {
+  // Cloudflare's own Email Sending, when the binding is configured.
+  if (env.EMAIL) {
+    const msg = {
+      from: SENDER,
+      to,
+      replyTo: env.REPLY_TO || REPLY_TO,
+      subject,
+      text,
+    };
+    if (html) msg.html = html;
+    if (attachments.length) {
+      msg.attachments = attachments.map((a) => ({
+        filename: a.filename,
+        type: a.type,
+        content: a.content,
+        disposition: 'attachment',
+      }));
+    }
+    return env.EMAIL.send(msg);
+  }
+
+  if (!env.RESEND_API_KEY) {
+    throw new Error('No email transport configured: bind EMAIL or set RESEND_API_KEY');
+  }
   const body = {
-    from: env.SENDER_EMAIL || 'txtllms <files@txtllms.com>',
+    from: env.SENDER_EMAIL || `${SENDER.name} <${SENDER.email}>`,
     to: [to],
     subject,
     text,
+    reply_to: env.REPLY_TO || REPLY_TO,
   };
   if (html) body.html = html;
-  if (attachments) body.attachments = attachments;
-  if (env.REPLY_TO) body.reply_to = env.REPLY_TO;
+  if (attachments.length) {
+    body.attachments = attachments.map((a) => ({ filename: a.filename, content: toBase64(a.content) }));
+  }
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -286,7 +320,7 @@ Congratulations on taking a significant step towards improving your ranking on A
 
 Best regards,
 Garvit`,
-    attachments: [{ filename: 'llms.txt', content: toBase64(markdown) }],
+    attachments: [{ filename: 'llms.txt', type: 'text/plain', content: markdown }],
   });
 
   return json({ success: true, message: 'LLMs.txt generated and sent successfully' });
