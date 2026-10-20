@@ -20,6 +20,10 @@
       "dest": "/public/images/$1"
     },
     {
+      "src": "/blog/([^./]+)",
+      "dest": "/public/blog/$1.html"
+    },
+    {
       "src": "/blog/(.*)",
       "dest": "/public/blog/$1"
     },
