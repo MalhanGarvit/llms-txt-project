@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your AI readiness checklist — txtllms</title>
+<meta name="description" content="Five checks to run on your website so AI assistants can find and represent it accurately.">
+<meta name="robots" content="noindex, follow">
+<meta name="referrer" content="no-referrer">
+<link rel="canonical" href="https://www.txtllms.com/check/result">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="txtllms">
+<meta property="og:title" content="Your AI readiness checklist — txtllms">
+<meta property="og:description" content="Five checks to run on your website so AI assistants can find and represent it accurately.">
+<meta property="og:url" content="https://www.txtllms.com/check/result">
+<meta property="og:image" content="https://www.txtllms.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#6C63FF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/consent.js" defer></script>
+<script src="/js/flow.js" defer></script>
+</head>
+<body data-flow="check" data-flow-page="check-2">
+<div class="wrap">
+
+<header class="topbar">
+  <a class="brand" href="/" aria-label="txtllms home">
+    <img src="/images/logo.svg" alt="txtllms — AI search, control, visibility" width="230" height="61">
+  </a>
+  <nav class="sitenav" aria-label="Primary">
+    <a href="/about">About</a>
+    <a href="/samples/">Samples</a>
+    <a href="/blog/">Blog</a>
+    <a href="/check/?src=cta-nav" data-cta="nav-check">Check your site</a>
+    <a href="/contact/?src=cta-nav" data-cta="nav-contact">Contact</a>
+    <a href="/start/?src=cta-nav" class="nav-cta" data-cta="nav-get-started">Get started</a>
+  </nav>
+</header>
+
+<main>
+<div class="doc-head">
+  <p class="eyebrow">Check your site &middot; checklist</p>
+  <h1>Readiness checklist for <span data-echo="website">your site</span></h1>
+  <p class="dates">These are the same five checks we would run by hand. This page doesn't scan your site
+  automatically &mdash; work through each one yourself.</p>
+</div>
+
+<ol class="body">
+  <li><strong>Is there an <code>llms.txt</code> at the root?</strong> Open
+  <code>https://<span data-echo="website">yourdomain.com</span>/llms.txt</code>. If you get a 404, you don't have one yet.</li>
+  <li><strong>Does <code>robots.txt</code> allow the AI crawlers you want?</strong> Look for rules naming
+  <code>GPTBot</code>, <code>ClaudeBot</code>, <code>PerplexityBot</code> or <code>Google-Extended</code>.
+  A blanket <code>Disallow: /</code> blocks them all.</li>
+  <li><strong>Is your sitemap referenced?</strong> A <code>Sitemap:</code> line in <code>robots.txt</code>
+  is the easiest way for any crawler to find your pages.</li>
+  <li><strong>Do your key pages work without JavaScript?</strong> Many AI crawlers don't run scripts. If
+  your main content only appears after JavaScript loads, they may see an empty page.</li>
+  <li><strong>Do your most important pages say what they are in the first paragraph?</strong> AI answers
+  lean heavily on the opening of a page.</li>
+</ol>
+
+<div class="cta-box">
+  <h2>Want help with number one?</h2>
+  <p>Tell us a little about the site and we'll put together an llms.txt plan for it.</p>
+  <form method="get" action="/start/" data-flow="check" data-step="2" data-carry>
+    <input type="hidden" name="src" value="cta-check">
+    <button type="submit" class="btn btn-primary" data-cta="check-get-started">Get started</button>
+  </form>
+  <p class="plain-alt">Or open <a href="/start/?src=cta-check"><code>/start/?src=cta-check</code></a>.</p>
+</div>
+</main>
+
+<footer class="doc">
+  <div class="sitefoot">
+    <a href="/">Home</a>
+    <a href="/start/">Get started</a>
+    <a href="/check/">Check your site</a>
+    <a href="/contact/">Contact</a>
+    <a href="/subscribe/">Newsletter</a>
+    <a href="/blog/">Blog</a>
+    <a href="/samples/">Samples</a>
+    <a href="/about">About</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+    <!--email_off--><a href="mailto:llmstxt@gmail.com">llmstxt@gmail.com</a><!--email_on-->
+    <button type="button" class="linkbtn" onclick="txtllmsCookieSettings()">Cookie settings</button>
+  </div>
+  <p style="margin-top:14px">&copy; 2026 Garvit Malhan, trading as txtllms.com.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -383,7 +383,15 @@ mixpanel.track("Blog View", {"article": "how-to-add-llmstxt-file"});
       grid-template-columns: 1fr;
     }
   }
+
+    .feedback{margin:3rem 0;padding:1.5rem;border:1px solid rgba(255,255,255,.1);border-radius:12px;text-align:center}
+    .feedback form{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:1rem 0}
+    .feedback .cta-btn{border:0;cursor:pointer;font:inherit}
+    .feedback .feedback-no{background:transparent;border:1px solid rgba(255,255,255,.25)}
+    .plain-alt{font-size:.85rem;opacity:.85}
+    .plain-alt code{word-break:break-all}
 </style>
+<script src="/js/flow.js" defer></script>
 </head>
 <body>
   <header class="header container">
@@ -400,10 +408,10 @@ mixpanel.track("Blog View", {"article": "how-to-add-llmstxt-file"});
   
   <main class="container">
     <article class="blog-content">
-      <header class="blog-header">
+      <div class="blog-header">
         <h1>How to Add llms.txt File to Your Website if You're Not a Techie</h1>
         <div class="blog-meta">Published on July 30, 2025 · 4 min read</div>
-      </header>
+      </div>
       
       <p>In today's AI-driven world, controlling how artificial intelligence interacts with your website content has become essential. The llms.txt file is emerging as the standard way to communicate your preferences to AI crawlers and large language models. But what if you're not technically inclined? Let's explore how to implement this important file without diving into code.</p>
 
@@ -442,7 +450,7 @@ mixpanel.track("Blog View", {"article": "how-to-add-llmstxt-file"});
       <div class="blog-cta">
         <h3>Create Your llms.txt File for Free</h3>
         <p>No technical skills required. Generate a customized llms.txt file in minutes.</p>
-        <a href="/" class="cta-btn">Generate Now</a>
+        <a href="/start/?src=cta-blog&amp;post=how-to-add-llmstxt-file" class="cta-btn" data-cta="blog-inline-start">Get started</a>
       </div>
 
       <h3>Step 2: Customize Your Permissions</h3>
@@ -487,6 +495,21 @@ mixpanel.track("Blog View", {"article": "how-to-add-llmstxt-file"});
       
       <p>By taking control of how AI interacts with your content now, you're preparing your website for the future of search and information retrieval—all without needing to write a single line of code.</p>
     </article>
+
+    <section class="feedback" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">Was this guide helpful?</h2>
+      <form method="get" action="/blog/feedback-thanks" data-flow="feedback" data-step="1">
+        <input type="hidden" name="post" value="how-to-add-llmstxt-file">
+        <input type="hidden" name="flow" value="feedback">
+        <input type="hidden" name="step" value="1">
+        <input type="hidden" name="src" value="form">
+        <button type="submit" name="helpful" value="yes" class="cta-btn">Yes, it helped</button>
+        <button type="submit" name="helpful" value="no" class="cta-btn feedback-no">Not really</button>
+      </form>
+      <p class="plain-alt">No form? Open <a href="/blog/feedback-thanks?post=how-to-add-llmstxt-file&amp;helpful=yes&amp;src=text"><code>/blog/feedback-thanks?post=how-to-add-llmstxt-file&amp;helpful=yes&amp;src=text</code></a> (or <code>helpful=no</code>).</p>
+      <p>Want updates when we publish? <a href="/subscribe/?src=cta-blog" data-cta="blog-subscribe">Join the newsletter</a>.</p>
+    </section>
+
     
     <aside class="related-posts">
       <h2 class="related-title">Related Resources</h2>
@@ -504,7 +527,7 @@ mixpanel.track("Blog View", {"article": "how-to-add-llmstxt-file"});
           <div class="related-content">
             <h3>Generate Your Own llms.txt</h3>
             <p>Use our free generator to create a customized llms.txt file for your website.</p>
-            <a href="/">Create Now →</a>
+            <a href="/start/?src=cta-blog&amp;post=how-to-add-llmstxt-file" data-cta="blog-related-start">Get started →</a>
           </div>
         </div>
       </div>

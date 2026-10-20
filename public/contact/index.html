@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — txtllms</title>
+<meta name="description" content="Questions, corrections, data requests or takedown requests for txtllms.com.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.txtllms.com/contact/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="txtllms">
+<meta property="og:title" content="Contact — txtllms">
+<meta property="og:description" content="Questions, corrections, data requests or takedown requests for txtllms.com.">
+<meta property="og:url" content="https://www.txtllms.com/contact/">
+<meta property="og:image" content="https://www.txtllms.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#6C63FF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/consent.js" defer></script>
+<script src="/js/flow.js" defer></script>
+</head>
+<body data-flow="contact" data-flow-page="contact-1">
+<div class="wrap">
+
+<header class="topbar">
+  <a class="brand" href="/" aria-label="txtllms home">
+    <img src="/images/logo.svg" alt="txtllms — AI search, control, visibility" width="230" height="61">
+  </a>
+  <nav class="sitenav" aria-label="Primary">
+    <a href="/about">About</a>
+    <a href="/samples/">Samples</a>
+    <a href="/blog/">Blog</a>
+    <a href="/check/?src=cta-nav" data-cta="nav-check">Check your site</a>
+    <a href="/contact/?src=cta-nav" data-cta="nav-contact">Contact</a>
+    <a href="/start/?src=cta-nav" class="nav-cta" data-cta="nav-get-started">Get started</a>
+  </nav>
+</header>
+
+<main>
+<div class="doc-head">
+  <p class="eyebrow">Contact</p>
+  <h1>Get in touch</h1>
+  <p class="dates">A real person reads every message.</p>
+</div>
+
+<p>
+  Questions, bug reports, corrections, data requests and takedown requests all come to the same
+  place. You can also email <!--email_off--><a href="mailto:llmstxt@gmail.com">llmstxt@gmail.com</a><!--email_on--> directly.
+</p>
+
+<form class="flow-form" method="get" action="/contact/sent" data-flow="contact" data-step="1">
+  <div class="field">
+    <label for="name">Your name</label>
+    <input type="text" id="name" name="name" required placeholder="Alex Smith" autocomplete="name">
+  </div>
+  <div class="field">
+    <label for="email">Email address</label>
+    <input type="email" id="email" name="email" required placeholder="you@example.com" autocomplete="email">
+  </div>
+  <div class="field">
+    <label for="topic">What is it about?</label>
+    <select id="topic" name="topic" required>
+      <option value="">Choose one</option>
+      <option value="question">A question</option>
+      <option value="bug">Something isn't working</option>
+      <option value="correction">A correction</option>
+      <option value="data-request">A request about my data</option>
+      <option value="takedown">A takedown request</option>
+      <option value="partnership">Working together</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" required placeholder="How can we help?"></textarea>
+  </div>
+    <input type="hidden" name="flow" value="contact">
+    <input type="hidden" name="step" value="1">
+    <input type="hidden" name="src" value="form">
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Send message</button>
+  </div>
+</form>
+
+<p class="plain-alt">No form? Open this address with your own values in place of the examples &mdash; it sends the message:<br><a href="/contact/sent?name=Alex&amp;email=you@example.com&amp;topic=question&amp;message=Hello&amp;src=text"><code>/contact/sent?name=Alex&amp;email=you@example.com&amp;topic=question&amp;message=Hello&amp;src=text</code></a></p>
+<div class="plain-alt"><p>Fields this step accepts:</p><ul><li><code>name</code> &mdash; your name (required)</li><li><code>email</code> &mdash; your email address (required)</li><li><code>topic</code> &mdash; one of question, bug, correction, data-request, takedown, partnership (required)</li><li><code>message</code> &mdash; your message (required)</li></ul></div>
+</main>
+
+<footer class="doc">
+  <div class="sitefoot">
+    <a href="/">Home</a>
+    <a href="/start/">Get started</a>
+    <a href="/check/">Check your site</a>
+    <a href="/contact/">Contact</a>
+    <a href="/subscribe/">Newsletter</a>
+    <a href="/blog/">Blog</a>
+    <a href="/samples/">Samples</a>
+    <a href="/about">About</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+    <!--email_off--><a href="mailto:llmstxt@gmail.com">llmstxt@gmail.com</a><!--email_on-->
+    <button type="button" class="linkbtn" onclick="txtllmsCookieSettings()">Cookie settings</button>
+  </div>
+  <p style="margin-top:14px">&copy; 2026 Garvit Malhan, trading as txtllms.com.</p>
+</footer>
+
+</div>
+</body>
+</html>

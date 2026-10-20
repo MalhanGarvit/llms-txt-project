@@ -30,6 +30,11 @@
     return s;
   }
 
+  function stripQuery(url) {
+    if (!url) return '';
+    try { var u = new URL(url); return u.origin + u.pathname; } catch (e) { return ''; }
+  }
+
   function loadAnalytics() {
     if (loaded) return;
     loaded = true;
@@ -39,17 +44,27 @@
     window.gtag = function () { window.dataLayer.push(arguments); };
     inject('https://www.googletagmanager.com/gtag/js?id=' + GA_ID);
     window.gtag('js', new Date());
-    window.gtag('config', GA_ID, { anonymize_ip: true });
-
-    // Vercel Analytics
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    inject('/_vercel/insights/script.js');
+    // The flow forms are GET, so answers - including email addresses - ride in the
+    // query string. Report path only: analytics must never receive what people typed.
+    window.gtag('config', GA_ID, {
+      anonymize_ip: true,
+      page_location: stripQuery(location.href),
+      page_referrer: stripQuery(document.referrer)
+    });
 
     // Mixpanel
     var mp = inject('https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js');
     mp.onload = function () {
       if (!window.mixpanel || !window.mixpanel.init) return;
-      window.mixpanel.init(MIXPANEL_TOKEN, { debug: false, ip: false });
+      window.mixpanel.init(MIXPANEL_TOKEN, {
+        debug: false,
+        ip: false,
+        // sendBeacon survives the navigation that follows a form submit
+        api_transport: 'sendBeacon',
+        // same reason as GA above: drop the full URLs, keep the path
+        property_blacklist: ['$current_url', '$referrer', '$initial_referrer']
+      });
+      window.mixpanel.register({ page_path: location.pathname });
       window.mixpanel.track('Page View');
     };
   }
