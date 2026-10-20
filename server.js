@@ -20,7 +20,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the public directory
-app.use(express.static('public'));
+// extensions: the flow forms submit to extensionless paths (/start/details), which
+// must resolve to public/start/details.html - the same mapping the Worker's
+// html_handling does on Cloudflare.
+app.use(express.static('public', { extensions: ['html'] }));
 
 // Set up Nodemailer transporter using Gmail SMTP.
 // EMAIL_PASS has no fallback on purpose: a literal app password here would be
