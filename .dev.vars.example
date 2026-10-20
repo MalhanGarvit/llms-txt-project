@@ -1,0 +1,8 @@
+# Copy to .dev.vars for local `wrangler dev`. Never commit the real file.
+# In production these are secrets: `npx wrangler secret put NAME`
+GOOGLE_API_KEY=your-gemini-api-key
+RESEND_API_KEY=re_your_resend_key
+
+# Must be on a domain verified in Resend. A gmail.com address cannot be used.
+SENDER_EMAIL=txtllms <files@txtllms.com>
+REPLY_TO=llmstxt@gmail.com
